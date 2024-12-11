@@ -17,6 +17,8 @@ const server = http.createServer(app);
 const io = new Server(server);
 const PORT = 3000;
 
+process.title = "DescargaRevistasJS";
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
