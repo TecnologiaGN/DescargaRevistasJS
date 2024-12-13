@@ -24,4 +24,5 @@ export async function descargar(linkDescarga, callback) {
     else if (_archivo === 'calameo') {await descargarCalameo(linkDescarga, callback)} // Screenshot
     else if (_archivo === 'tabloide') {await descargarTabloide(linkDescarga, callback)} // Sólo toma el PDF y ya.
     else if (_archivo === 'clarin') {await descargarClarin(linkDescarga, callback)}
+    else if (_archivo === '!yumpu') {await descargarYumpu(linkDescarga, callback)}
 }

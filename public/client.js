@@ -41,7 +41,8 @@ async function manejarDescarga() {
             else if (linkDescarga.includes('calameo')) archivoEnrutador = 'calameo';
             else if (linkDescarga.includes('issuu.com')) archivoEnrutador = 'issuu';
             else if (linkDescarga.includes('tabloide.com')) archivoEnrutador = 'tabloide';
-            else if (linkDescarga.includes('yumpu.com')) archivoEnrutador = 'yumpu';
+            else if (linkDescarga.includes('yumpu.com') && !linkDescarga.includes('embed')) archivoEnrutador = 'yumpu';
+            else if (linkDescarga.includes('yumpu.com') && linkDescarga.includes('embed')) archivoEnrutador = 'yumpu';
             else if (linkDescarga.includes('drive.google.com')) archivoEnrutador = 'googleDrive';
             else if (linkDescarga.includes('clarin.com')) archivoEnrutador = 'clarin';
 
