@@ -8,16 +8,22 @@ import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { webpAjpg } from '../funcionalidades/webpAjpg.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
+import { loginSemana } from '../funcionalidades/loginSemana.js';
 
 let formato = '';
 let largestWidth = 0;
+let linkDescargaiFrame;
 
 export async function descargarPaginasCifradas(linkDescarga, callback) {
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
     const networkPath = await crearCarpetas();
     console.log('El networkpath es: ' + networkPath)
-    mandarMensaje('URLs cifradas, ten paciencia y ordena el PDF al final.', callback)    
+    mandarMensaje('URLs cifradas, ten paciencia y ordena el PDF al final.', callback) 
+
+    if (getArchivo() === 'semana') {
+        linkDescargaiFrame = await loginSemana(linkDescarga);
+    }  
     // Lanzar un nuevo navegador
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
@@ -53,53 +59,22 @@ export async function descargarPaginasCifradas(linkDescarga, callback) {
     });
 
     // Navegar a la página específica
-    await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
+    await page.goto(linkDescargaiFrame, { waitUntil: 'networkidle2', timeout: 340000 });
 
     // Se crea waitFor para esperar dentro puppeter
     const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
     // Función para hacer clic en la flecha derecha y esperar
     const clickNextButton = async () => {
-        if (getArchivo() === 'clarin') {
-            await waitFor(5000)
-            const button = await page.$('.readingnav.rn-right')
-            await button.click();
-            await waitFor(1000)
-            await page.mouse.click(300, 70)
-            console.log('Se ha dado clic en: 200, 200.')
-            await waitFor(1000)
-            await page.mouse.click(300, 70)
-            console.log('Se ha dado clic en: 200, 200.')
-            await waitFor(1000)
-            await page.mouse.click(700, 70)
-            console.log('Se ha dado clic en: 700, 200.')
-            await waitFor(1000)
-            await page.mouse.click(700, 70)
-            console.log('Se ha dado clic en: 700, 200.')
-            await waitFor(1000)
-            await page.mouse.click(300, 70)
-            console.log('Se ha dado clic en: 200, 200.')
-            await waitFor(1000)
-            await page.mouse.click(300, 70)
-            console.log('Se ha dado clic en: 200, 200.')
-            await waitFor(1000)
-            await page.mouse.click(700, 70)
-            console.log('Se ha dado clic en: 700, 200.')
-            await waitFor(1000)
-            await page.mouse.click(700, 70)
-            console.log('Se ha dado clic en: 700, 200.')
-            await waitFor(1000)
-        } else {
-            try {
-                await page.waitForSelector('.flip_button_right', { visible: true, timeout: 5000}); // Cambia esto al selector correcto de la flecha
-                const button = await page.$('.flip_button_right'); // Obtén el elemento
-                await button.scrollIntoView(); // Desplázate al elemento
-                await button.click(); // Haz clic en el botón
-                await waitFor(1500); // Esperar 1 segundo
-            } catch (error) {
-                console.error('Error al hacer clic en el botón:', error.message);
-                return false; // Rompe el bucle for
-            }
+        try {
+            await page.waitForSelector('.flip_button_right', { visible: true, timeout: 5000}); // Cambia esto al selector correcto de la flecha
+            const button = await page.$('.flip_button_right'); // Obtén el elemento
+            await button.scrollIntoView(); // Desplázate al elemento
+            await button.click(); // Haz clic en el botón
+            await waitFor(1500); // Esperar 1 segundo
+        } catch (error) {
+            console.error('Error al hacer clic en el botón:', error.message);
+            return false; // Rompe el bucle for
         }
         return true;
     };

@@ -9,8 +9,10 @@ import { webpAjpg } from '../funcionalidades/webpAjpg.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
 
-let formato = '';
+let formato = 'webp';
 let largestWidth = 0;
+let mayorPagina = 0;
+let stopClickNextButton = false;
 
 export async function descargarClarin(linkDescarga, callback) {
     const generalPath = getGeneralPath();
@@ -24,9 +26,9 @@ export async function descargarClarin(linkDescarga, callback) {
 
     let originalLinks = [];
     let linksFaltantes = true;
-
     let validacionPaginasActivada = true;
 
+    // Obtiene el número de la página del link
     function getPageNumber(url) {
         const pageMatch = url.match(/page=(\d+)/);
         return pageMatch ? parseInt(pageMatch[1], 10) : null;
@@ -38,14 +40,22 @@ export async function descargarClarin(linkDescarga, callback) {
         if (response.request().method() === 'GET' && (url.includes('page=') && url.includes('/img?') && url.includes('scale=') && url.includes('ticket'))) {
             //------------------------------------------TIEMPO-------------------------------------------
 
-            // Extraer el número de la página de la URL
             const currentPage = getPageNumber(url);
 
+            // 
             if (validacionPaginasActivada) {
+                console.log('Se llamó la función validacionPaginasActivada')
                 validacionPaginasActivada = false;
                 let paginaAEvaluar = currentPage + 1;
+                if (paginaAEvaluar > mayorPagina) {
+                    mayorPagina = paginaAEvaluar
+                } else {
+                    stopClickNextButton = true;
+                }
                 console.log('contando... ' + ' La página evaluando es: ' + paginaAEvaluar)
                 console.log(`Evaluando: &page=${paginaAEvaluar}&`)
+
+                // Comprueba si tiempo después hay un indice nuevo de página
                 setTimeout(() => {
                     console.log("La condición ha sido verificada después de 10 segundos");
                     console.log("Los links que hay son: ");
@@ -53,34 +63,34 @@ export async function descargarClarin(linkDescarga, callback) {
 
                     for (let i = 0; i < originalLinks.length; i++) {
                         if (originalLinks[i].includes(`page=${paginaAEvaluar}`)) {
-                            linksFaltantes = true;
-                            console.log('NO HAY MÁS PÁGINAS.');
-                          break;  // No es necesario seguir buscando si ya encontramos uno
-                        } else {
-                            console.log(originalLinks[i])
-                            console.log('No la incluyó wtf!')
-                        }
+                            console.log('Se han encontrado más páginas, el proceso continua');
+                            break;
+                        } 
                       }
-
-                    if (!originalLinks.includes(`page=${paginaAEvaluar+1}`)) {
-
-                    }
+                    validacionPaginasActivada = true                 
                 }, 30000);
             }
 
             //--------------------------------------------------------------------------------------------
-            // Extrae el valor de `w=` usando una expresión regular
+            // Extrae el valor de `scale=` usando una expresión regular
             const widthMatch = url.match(/scale=(\d+)/);
             if (widthMatch) {
                 const width = parseInt(widthMatch[1], 10);
-    
                 if (width > largestWidth) {
                     // Actualiza el mayor ancho encontrado y resetea el array con el nuevo valor más alto
                     largestWidth = width;
                     originalLinks = [url]; // Reinicia el array con el enlace actual
+                    console.log('se ha reiniciado el array con un scale más grande.')
                 } else if (width === largestWidth) {
-                    // Solo agrega el enlace si tiene el mismo ancho máximo
-                    originalLinks.push(url);
+                    // Si tiene el scale máximo
+                    if (originalLinks.length === 0) originalLinks.push(url); // Agrega al array si está vacío
+                    // Recorrer todas las URLs y solo agregar una por página
+                    let isPageExist = originalLinks.some(originalLink => getPageNumber(originalLink) === currentPage);
+                    // Si el 'page=' no existe en el array, agregar el nuevo enlace
+                    if (!isPageExist) {
+                        originalLinks.push(url);
+                        mandarMensaje("Enlace agregado: " + url, callback);
+                    } 
                 }
             }
             // mandarMensaje(`Respuesta recibida desde: ${url} (ancho más grande encontrado: ${largestWidth})`, callback);
@@ -95,68 +105,45 @@ export async function descargarClarin(linkDescarga, callback) {
 
     // Función para hacer clic en la flecha derecha y esperar
     const clickNextButton = async () => {
-        if (!linksFaltantes) return false;
         await waitFor(1000)
-        const button = await page.$('.readingnav.rn-right')
-        await button.click();
-        await waitFor(1000)
-        await page.mouse.click(300, 70)
-        console.log('Se ha dado clic en: 200, 200.')
-        await waitFor(1000)
-        await page.mouse.click(300, 70)
-        console.log('Se ha dado clic en: 200, 200.')
-        await waitFor(1000)
-        await page.mouse.click(700, 70)
-        console.log('Se ha dado clic en: 700, 200.')
-        await waitFor(1000)
-        await page.mouse.click(700, 70)
-        console.log('Se ha dado clic en: 700, 200.')
-        await waitFor(1000)
-        return true;
+        // const button = await page.$('.readingnav.rn-right')
+        // await button.click();
+        await page.keyboard.press('ArrowRight');
+        await waitFor(2000)
+        await page.mouse.click(100, 70) // clic a la izquierda
+        await waitFor(2000)
+        await page.mouse.click(100, 70) // clic a la izquierda
+        await waitFor(2000)
+        await page.mouse.click(500, 70) // clic a la derecha
+        await waitFor(2000)
+        await page.mouse.click(500, 70) // clic a la derecha
+        await waitFor(2000)
     };
 
     // Repetir clic en el botón correr página
     for (let i = 0; i < 500; i++) { // Cambiar por veces a intentar
-        const success = await clickNextButton();
-        if (!success) {
+        await clickNextButton();
+        if (stopClickNextButton) {
+            console.log('Se ha parado hijos de fruta!!')
             break;
         }
     }
 
-    //
-    console.log(originalLinks)
+    // Arreglar el array
+    // Paso 1: Agregar un nuevo enlace con `page=1`
+    let newLink = originalLinks[0].replace(/page=\d+/, "page=1");
+    let paginaUno = newLink.replace(/(&scale=\d+).*$/, '$1');
+    originalLinks.push(paginaUno);
+    // Paso 2: Eliminar `&scale=x&` y `&ticket=...` de cada URL
+    originalLinks = originalLinks.map(url => url.replace(/&left=[^&]+&top=[^&]+&right=[^&]+&bottom=[^&]+/, ''));
+    // Paso 3: Ordenar las URLs por el valor de `page`
+    originalLinks.sort((a, b) => {
+        let pageA = parseInt(a.match(/page=(\d+)/)[1], 10);
+        let pageB = parseInt(b.match(/page=(\d+)/)[1], 10);
+        return pageA - pageB;
+    });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    console.log(originalLinks);
 
     // Tomar el primer enlace
     const firstLink = originalLinks[0];
@@ -168,7 +155,14 @@ export async function descargarClarin(linkDescarga, callback) {
         mandarMensaje(newUrl, callback);
         if(originalLinks[0].includes('.webp')) formato = 'webp';
         try {
-            const response = await axios.get(newUrl, { responseType: 'arraybuffer' });
+            console.log('newUrl: ' + newUrl)
+            // Configura los encabezados para simular una solicitud desde un navegador
+            const response = await axios.get(newUrl, {
+                responseType: 'arraybuffer',
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+                }
+            });
             const filePath = path.join(networkPath, `page_${pageNumber}.${formato}`); // Guardar en ruta de red
             fs.writeFileSync(filePath, response.data);
             return filePath;

@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
-import { takeScreenshots } from '../funcionalidades/takeScreenshots.js';
+import fs from 'fs';
+import path from 'path';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
@@ -11,94 +12,99 @@ export async function descargarYumpu(linkDescarga, callback) {
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
     const networkPath = await crearCarpetas();
+    console.log('El networkpath es: ' + networkPath)
+    mandarMensaje('URLs YUMPU cifradas, ten paciencia y ordena el PDF al final.', callback);    
+    mandarMensaje('ESTA PÁGINA SE DEBE ORDENAR!!', callback)
+    mandarMensaje('Hay una pagina que contiene miniatura de las paginas de la revista, ELIMINAR!!', callback)
+    mandarMensaje('Procesando imágenes, no cierres el navegador...', callback)
+
     // Lanzar un nuevo navegador
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
-    
-    const originalLinks = [];
 
-    mandarMensaje('Estableciendo conexión, pronto comenzará la descarga...', callback);
+    let originalLinks = [];
 
     // Escuchar las solicitudes de red
-    page.on('response', response => {
+    page.on('response', async response => {
         const url = response.url();
-        if (response.request().method() === 'GET' && url.includes('.svgz')) {
-            mandarMensaje(`Respuesta recibida desde: ${url}`, callback);
-            originalLinks.push(url);
+        if (response.request().method() === 'GET' && url.includes('.jpg?') && !url.includes('/bg')) {
+            // Verificar si el enlace ya ha sido agregado
+            if (!originalLinks.includes(url)) {
+                console.log(`Respuesta recibida desde: ${url}`);
+                originalLinks.push(url);
+            }
         }
     });
 
     // Navegar a la página específica
-    await page.goto(linkDescarga, {waitUntil: 'networkidle2', timeout: 340000});
-
-    // Recargar la página
-    await page.reload({ waitUntil: 'networkidle2' });
-    
-    // Esperar 10 segundos para que se procesen las solicitudes
-    await new Promise(resolve => setTimeout(resolve, 5000));
+    await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
 
     // Se crea waitFor para esperar dentro puppeter
     const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-    await waitFor(10000);
-
-    if (originalLinks.length === 0) {
-        mandarMensaje('Iniciando Login, espera por fa.', callback)
-        // Usuario contraseña
-        await page.type('input[name="login"]', '830047431');
-        await page.type('input[name="password"]', '830047431');
-        await page.click('button.button-submit')
-        await new Promise(resolve => setTimeout(resolve, 10000));
+    // Espera activa hasta que se detecten nuevos enlaces
+    let lastLength = 0;
+    let maxRetries = 7;
+    let retries = 0;
+    while (retries < maxRetries) {
+        await waitFor(5000); // Espera 5 segundos antes de verificar
+        if (originalLinks.length > lastLength) {
+            // Si el número de enlaces ha aumentado, resetear los intentos
+            retries = 0;
+            lastLength = originalLinks.length;
+        } else {
+            // Si no ha habido nuevos enlaces, aumentar el contador de intentos
+            retries++;
+            console.log('maxRetries = ' + maxRetries)
+            console.log('retries = ' + retries)
+        }
     }
+
+    console.log(originalLinks);
 
     // Tomar el primer enlace
     const firstLink = originalLinks[0];
-    mandarMensaje('Descargando desde: ' + firstLink, callback);
+    mandarMensaje(`Descargando desde: ${firstLink}`, callback);
 
-// Función para verificar si una URL existe
-const checkUrlExists = async (url) => {
-    try {
-        const response = await axios.head(url);
-        return response.status === 200; // Devuelve true si la URL existe
-    } catch (error) {
-        if (error.response && error.response.status === 404) {
-            return false; // Devuelve false si la URL no existe
+    // Función para descargar la imagen
+    const downloadImage = async (pageNumber) => {
+        const newUrl = originalLinks[pageNumber - 1];
+        mandarMensaje(newUrl, callback);
+        try {
+            const response = await axios.get(newUrl, { responseType: 'arraybuffer' });
+            const filePath = path.join(networkPath, `page_${pageNumber}.jpg`); // Guardar en ruta de red
+            fs.writeFileSync(filePath, response.data);
+            return filePath;
+        } catch (error) {
+            console.error(`Error al descargar la página ${pageNumber}:`, error.message);
+            return null; // Retornar null si hay un error
         }
-        console.error(`Error al verificar la URL: ${error.message}`);
-        return false; // En cualquier otro error, también devolvemos false
+    };
+
+    let jpgPaths = [];
+    let pageNumber = 1;
+    while (true) {
+        if (pageNumber > originalLinks.length) {
+            mandarMensaje('No hay más enlaces para descargar.', callback);
+            break; // Romper el bucle si no hay más enlaces
+        }
+        const result = await downloadImage(pageNumber);
+        if (result === null) break; // Salir si hay un error
+        mandarMensaje(`Página ${pageNumber} descargada.`, callback);
+        jpgPaths.push(result);
+        pageNumber++;
     }
-};
-
-// Función para agregar la URL al array
-const addUrlToArray = (url, pageNumber) => {
-    return url.replace(/p\d+.svgz/, `p${pageNumber}.svgz`);
-};
-
-// Bucle para agregar URLs al array hasta que ya no existan más páginas
-const svgUrlArray = [];
-let pageNumber = 1;
-while (true) {
-    const url = addUrlToArray(firstLink, pageNumber);
-    const exists = await checkUrlExists(url); // Verifica si la URL existe
-
-    if (!exists) break; // Salir del bucle si la URL no existe
-    mandarMensaje(`Página ${pageNumber} añadida al array.`, callback);
-    svgUrlArray.push(url); // Agrega la URL al array
-    pageNumber++;
-}
-
-    // Tomar Screenshots
-    let imagePaths = []
-    imagePaths = await takeScreenshots(svgUrlArray, networkPath, callback)
 
     // Crear un nuevo PDF
     mandarMensaje('Creándose PDF, espera...', callback);
     await waitFor(5000);
-    await crearPdf(imagePaths, networkPath, callback);
+    await crearPdf(jpgPaths, networkPath, callback);
     mandarMensaje('PDF creado exitosamente en la ruta de red.', callback);
-    mandarMensaje('PDF ORDENADO.', callback)
+    mandarMensaje('ORDENA EL PDF!!!.', callback);
 
-    imagePaths= [];
+    // Limpieza de arrays
+    originalLinks = [];
+    jpgPaths = [];
 
     // Cerrar el navegador
     await browser.close();

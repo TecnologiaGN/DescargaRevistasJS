@@ -4,6 +4,7 @@ import { descargarPaginasBlob } from './revistas/descargarPaginasBlob.js';
 import { descargarCalameo } from './revistas/calameo.js';
 import { descargarTabloide } from './revistas/tabloide.js';
 import { descargarClarin } from './revistas/clarin.js';
+import { descargarYumpu } from './revistas/yumpu.js';
 
 let _archivo = '';
 let _generalPath = '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS';
@@ -24,5 +25,5 @@ export async function descargar(linkDescarga, callback) {
     else if (_archivo === 'calameo') {await descargarCalameo(linkDescarga, callback)} // Screenshot
     else if (_archivo === 'tabloide') {await descargarTabloide(linkDescarga, callback)} // Sólo toma el PDF y ya.
     else if (_archivo === 'clarin') {await descargarClarin(linkDescarga, callback)}
-    else if (_archivo === '!yumpu') {await descargarYumpu(linkDescarga, callback)}
+    else if (_archivo === 'yumpu2') {await descargarYumpu(linkDescarga, callback)}
 }
