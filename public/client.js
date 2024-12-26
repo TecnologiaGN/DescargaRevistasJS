@@ -68,9 +68,10 @@ async function manejarDescarga() {
             });
             const result = await response.text();
             avisos(result);
-
+            console.log('antes de window open')
             // Abrir el enlace de descarga en una nueva pestaña
             window.open(`/descargar-archivo/${archivoEnrutador}.pdf`, '_blank');
+            console.log('después de window open')
         } else {
             avisos('Enlace no válido.');
         }

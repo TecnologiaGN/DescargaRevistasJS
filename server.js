@@ -53,7 +53,7 @@ app.post('/descargar', async (req, res) => {
 app.get('/descargar-archivo/:nombreArchivo', async (req, res) => {
     try {
         const generalPath = getGeneralPath();
-        const folderName = await getNameFile(); // Asegúrate de que esto esté en una función async
+        const folderName = await getNameFile();
 
         const filePath = path.join(`${generalPath}\\${folderName}`, `${folderName}.pdf`);
         console.log('filepath en el server: ' + filePath);
