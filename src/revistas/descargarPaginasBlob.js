@@ -5,7 +5,7 @@ import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
-import { getGeneralPath } from '../enrutador.js';
+import { getGeneralPath } from '../router/enrutador.js';
 
 export async function descargarPaginasBlob(linkDescarga, callback) {
     //-----------------ELIMINAR-CARPETAS-Y-CREAR-NUEVAS--------------------//

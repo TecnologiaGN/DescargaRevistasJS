@@ -5,9 +5,14 @@ import path from 'path';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearCarpetas, getNameFile } from '../funcionalidades/crearCarpetas.js';
-import { getGeneralPath } from '../enrutador.js';
+import { getGeneralPath } from '../router/enrutador.js';
 
 export async function descargarTabloide(linkDescarga, callback) {
+    const credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesTabloide.json', 'utf8'));
+    const user = credenciales.user;
+    const password = credenciales.password;
+
+
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
     const networkPath = await crearCarpetas();
@@ -32,14 +37,11 @@ export async function descargarTabloide(linkDescarga, callback) {
     
     async function logInTabloide() {
         mandarMensaje('Iniciando Login, espera por fa...', callback)
-        let elemento = '.jeg_popuplink';
-        await page.waitForSelector(elemento); 
-        await page.click(elemento);
+        await page.waitForSelector('.jeg_popuplink'); 
+        await page.click('.jeg_popuplink');
         await waitFor(5000);
-        const inputSelector = 'input[placeholder="Usuario"]';
-        await page.type(inputSelector, 'globalnews.group colombia');
-        const passwordInputSelector = 'input[type="password"][placeholder="Contraseña"]';
-        await page.type(passwordInputSelector, 'Globalnews2021')
+        await page.type('input[placeholder="Usuario"]', user);
+        await page.type('input[type="password"][placeholder="Contraseña"]', password)
         await page.click('input[name="jeg_login_button"]');
     }
 

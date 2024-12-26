@@ -1,13 +1,18 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
+import fs from 'fs';
 import { takeScreenshots } from '../funcionalidades/takeScreenshots.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
-import { getGeneralPath } from '../enrutador.js';
+import { getGeneralPath } from '../router/enrutador.js';
 
 export async function descargarCalameo(linkDescarga, callback) {
+    const credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesCalameo.json', 'utf8'));
+    const user = credenciales.user;
+    const password = credenciales.password;
+
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
     const networkPath = await crearCarpetas();
@@ -45,8 +50,8 @@ export async function descargarCalameo(linkDescarga, callback) {
     if (originalLinks.length === 0) {
         mandarMensaje('Iniciando Login, espera por fa.', callback)
         // Usuario contraseña
-        await page.type('input[name="login"]', '830047431');
-        await page.type('input[name="password"]', '830047431');
+        await page.type('input[name="login"]', user);
+        await page.type('input[name="password"]', password);
         await page.click('button.button-submit')
         await new Promise(resolve => setTimeout(resolve, 10000));
     }

@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { getArchivo, getGeneralPath } from '../enrutador.js';
+import { getArchivo, getGeneralPath } from '../router/enrutador.js';
 
 let _carpeta = '';
 let _nombreArchivo = '';

@@ -1,8 +1,8 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { descargar, getArchivo, getGeneralPath, setArchivo } from './public/enrutador.js';
-import { getNameFile } from './public/funcionalidades/crearCarpetas.js';
+import { descargar, getArchivo, getGeneralPath, setArchivo } from './src/router/enrutador.js';
+import { getNameFile } from './src/funcionalidades/crearCarpetas.js';
 
 import http from 'http';
 import { Server } from 'socket.io';

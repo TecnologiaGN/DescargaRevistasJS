@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
-import { getArchivo, getGeneralPath } from '../enrutador.js';
+import { getGeneralPath } from '../router/enrutador.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { webpAjpg } from '../funcionalidades/webpAjpg.js';
@@ -25,7 +25,6 @@ export async function descargarClarin(linkDescarga, callback) {
     const page = await browser.newPage();
 
     let originalLinks = [];
-    let linksFaltantes = true;
     let validacionPaginasActivada = true;
 
     // Obtiene el número de la página del link

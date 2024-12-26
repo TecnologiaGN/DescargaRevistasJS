@@ -1,11 +1,11 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
-import fs, { link } from 'fs';
+import fs from 'fs';
 import path from 'path';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
-import { getArchivo, getGeneralPath } from '../enrutador.js';
+import { getArchivo, getGeneralPath } from '../router/enrutador.js';
 import { webpAjpg } from '../funcionalidades/webpAjpg.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
 

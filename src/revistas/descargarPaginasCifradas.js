@@ -2,7 +2,7 @@ import puppeteer from 'puppeteer';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
-import { getArchivo, getGeneralPath } from '../enrutador.js';
+import { getArchivo, getGeneralPath } from '../router/enrutador.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { webpAjpg } from '../funcionalidades/webpAjpg.js';

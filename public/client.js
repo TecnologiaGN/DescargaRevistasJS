@@ -45,6 +45,7 @@ async function manejarDescarga() {
             else if (linkDescarga.includes('yumpu.com') && linkDescarga.includes('embed')) archivoEnrutador = 'yumpu2';
             else if (linkDescarga.includes('drive.google.com')) archivoEnrutador = 'googleDrive';
             else if (linkDescarga.includes('clarin.com')) archivoEnrutador = 'clarin';
+            else if (linkDescarga.includes('rollingstone.com')) archivoEnrutador = 'rollingStone';
 
             avisos('Enlace no válido.');
 
