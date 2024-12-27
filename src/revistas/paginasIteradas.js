@@ -21,6 +21,7 @@ export async function descargarPaginasIteradas(linkDescarga, callback) {
     let originalLinks = [];
 
     mandarMensaje('Estableciendo conexión, pronto comenzará la descarga...', callback);
+    mandarMensaje('El PDF estará ordenado.', callback);
 
     let largestWidth = 0;
     const regex = /\/page_\d+\.jpg$/;

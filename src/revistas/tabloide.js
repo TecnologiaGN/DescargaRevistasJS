@@ -6,12 +6,24 @@ import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearCarpetas, getNameFile } from '../funcionalidades/crearCarpetas.js';
 import { getGeneralPath } from '../router/enrutador.js';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let credenciales;
+
+const loadCredenciales = async () => {
+    // Si las credenciales están en memoria, no las volvemos a cargar
+    if (!credenciales) {
+        // Cambiar la ruta para ir al directorio raíz y acceder a 'config\credenciales'
+        const filePath = path.join(__dirname, '../..', 'config', 'credenciales', 'credencialesTabloide.json');
+        credenciales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+    return credenciales;
+};
 
 export async function descargarTabloide(linkDescarga, callback) {
-    const credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesTabloide.json', 'utf8'));
-    const user = credenciales.user;
-    const password = credenciales.password;
-
+    const { user, password } = await loadCredenciales();
 
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
@@ -20,6 +32,13 @@ export async function descargarTabloide(linkDescarga, callback) {
     mandarMensaje('Link de tabloide, sólo es ingresar y descargar el PDF. Toma unos instantes ;)', callback)    
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
+
+    // Intentar cargar las cookies guardadas de sesiones anteriores
+    const cookiesPath = path.join(__dirname, '../..', 'config', 'cookies', 'cookiesTabloide.json');
+    if (fs.existsSync(cookiesPath)) {
+        const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf8'));
+        await page.setCookie(...cookies);
+    }
 
     let originalLinks = [];
 
@@ -35,6 +54,9 @@ export async function descargarTabloide(linkDescarga, callback) {
     await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
     const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
     
+    // Si no estamos logueados, hacer login
+    let loggedIn = false;
+
     async function logInTabloide() {
         mandarMensaje('Iniciando Login, espera por fa...', callback)
         await page.waitForSelector('.jeg_popuplink'); 
@@ -43,6 +65,7 @@ export async function descargarTabloide(linkDescarga, callback) {
         await page.type('input[placeholder="Usuario"]', user);
         await page.type('input[type="password"][placeholder="Contraseña"]', password)
         await page.click('input[name="jeg_login_button"]');
+        loggedIn = true;
     }
 
     // Función para descargar la imagen
@@ -60,7 +83,12 @@ export async function descargarTabloide(linkDescarga, callback) {
         }
     };
 
-    await logInTabloide();
+    try {
+        await logInTabloide();
+    } catch (error) {
+        console.log('Ya está logueado o ocurrió un error al intentar loguearse', error.message);
+    }
+
     await waitFor(10000);
     await page.evaluate((link) => {window.location.href = link}, linkDescarga);
     await page.waitForNavigation({ waitUntil: 'networkidle2' });
@@ -72,6 +100,12 @@ export async function descargarTabloide(linkDescarga, callback) {
 
     mandarMensaje('PDF descargado exitosamente en la ruta de red.', callback);
     mandarMensaje('PDF ORDENADO.', callback)
+
+    if (loggedIn) {
+        // Guardar las cookies para la próxima vez
+        const cookies = await page.cookies();
+        fs.writeFileSync(cookiesPath, JSON.stringify(cookies));
+    }
 
     // Limpieza de arrays
     originalLinks = [];

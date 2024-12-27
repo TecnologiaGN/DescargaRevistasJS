@@ -38,13 +38,13 @@ button {
   height: 220px;
   text-align: center;
   background-image: url(/img/nubeComic.png);
-  background-size: 300px 220px;
+  background-size: 226px 160px;
   background-position: center;
-  background-repeat: no-repeat; 
-  transform: translate(-173%, -50vh);
-  animation: aparecerDesaparecer 20s infinite; /* Nombre de la animación, duración, y que se repita infinitamente */
-  opacity: 0; /* Inicialmente el elemento es invisible */
-  transition: opacity 1s ease-in-out; /* Para una transición suave */
+  background-repeat: no-repeat;
+  transform: translate(-110%, -51vh);
+  animation: aparecerDesaparecer 20s infinite;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 .actualizacion {
@@ -64,10 +64,41 @@ button {
 }
 
 #actualizaciones p {
-  width: 239px;
-  top: 30%;
-  left: 5%;
-  font-size: 12px;
+  width: 189px;
+  top: 11%;
+  left: 13%;
+  font-size: 13px;
+}
+
+.instructivo {
+  z-index: 1;
+  border: 2px solid #000;
+  background-color: #FAF7F0;
+  position: fixed;
+  top: 50%;
+  left: 0%;
+  transform: translate(22px, -48vh);
+  padding: 3px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.instructivo button {
+  all: unset;
+  background-color: #FAF7F0;
+  padding: 7px 0px;
+}
+
+.instructivo a{
+  color: #000;
+  background-color: #FAF7F0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 900;
+  transition: 0.2s all ease-in;
+}
+
+.instructivo a:hover {
+  background-color: #b5b5b4;
 }
 
 .advertencia {

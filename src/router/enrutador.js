@@ -1,11 +1,11 @@
-import { descargarPaginasIteradas } from '../revistas/descargarPaginasIteradas.js';
-import { descargarPaginasCifradas } from '../revistas/descargarPaginasCifradas.js';
-import { descargarPaginasBlob } from '../revistas/descargarPaginasBlob.js';
+import { descargarPaginasIteradas } from '../revistas/paginasIteradas.js';
+import { descargarPaginasCifradas } from '../revistas/paginasCifradas.js';
+import { descargarPaginasBlob } from '../revistas/paginasBlob.js';
 import { descargarCalameo } from '../revistas/calameo.js';
 import { descargarTabloide } from '../revistas/tabloide.js';
 import { descargarClarin } from '../revistas/clarin.js';
 import { descargarYumpu } from '../revistas/yumpu.js';
-import { descargarPDF } from '../revistas/descargarPDF.js';
+import { descargarRollingStone } from '../revistas/rollingStone.js';
 
 let _archivo = '';
 let _generalPath = '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS';
@@ -27,5 +27,5 @@ export async function descargar(linkDescarga, callback) {
     else if (_archivo === 'tabloide') {await descargarTabloide(linkDescarga, callback)} // Sólo toma el PDF y ya.
     else if (_archivo === 'clarin') {await descargarClarin(linkDescarga, callback)}
     else if (_archivo === 'yumpu2') {await descargarYumpu(linkDescarga, callback)}
-    else if (_archivo === 'rollingStone') {await descargarPDF(linkDescarga, callback)}
+    else if (_archivo === 'rollingStone') {await descargarRollingStone(linkDescarga, callback)}
 }

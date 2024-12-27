@@ -1,16 +1,21 @@
 import fs from 'fs';
 import puppeteer from 'puppeteer';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-let credenciales = null;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-async function loadCredenciales() {
+let credenciales;
+
+const loadCredenciales = async () => {
     // Si las credenciales están en memoria, no las volvemos a cargar
     if (!credenciales) {
-        credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesSemana.json', 'utf8'));
+        // Cambiar la ruta para ir al directorio raíz y acceder a 'config\credenciales'
+        const filePath = path.join(__dirname, '../..', 'config', 'credenciales', 'credencialesSemana.json');
+        credenciales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     }
     return credenciales;
-}
+};
 
 export async function loginSemana(linkDescarga) {
     const { user, password } = await loadCredenciales();
@@ -20,7 +25,7 @@ export async function loginSemana(linkDescarga) {
     const page = await browser.newPage();
 
     // Intentar cargar las cookies guardadas de sesiones anteriores
-    const cookiesPath = path.join('C:\\DESCARGAREVISTASJS\\config\\cookies\\', 'cookiesSemana.json');
+    const cookiesPath = path.join(__dirname, '../..', 'config', 'credenciales', 'cookiesSemana.json');
     if (fs.existsSync(cookiesPath)) {
         const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf8'));
         console.log("Cookies cargadas:", cookies);  // Verifica si las cookies se están cargando correctamente

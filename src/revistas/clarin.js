@@ -19,7 +19,8 @@ export async function descargarClarin(linkDescarga, callback) {
     await eliminarArchivos(generalPath);
     const networkPath = await crearCarpetas();
     console.log('El networkpath es: ' + networkPath)
-    mandarMensaje('URLs cifradas, ten MUCHA paciencia y ordena el PDF al final.', callback)    
+    mandarMensaje('URLs cifradas, el PDF sale ordenado. Espera por fa.', callback);
+    mandarMensaje('Hay una miniatura de la revista con todas las páginas, la debes buscar y ELIMINAR!!!', callback)      
     // Lanzar un nuevo navegador
     const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
@@ -202,7 +203,7 @@ export async function descargarClarin(linkDescarga, callback) {
     await waitFor(5000);
     await crearPdf(jpgPaths, networkPath, callback);
     mandarMensaje('PDF creado exitosamente en la ruta de red.', callback);
-    mandarMensaje('ORDENA EL PDF!!!.', callback)
+    mandarMensaje('PDF Ordenado.', callback)
 
     // Limpieza de arrays
     originalLinks = [];

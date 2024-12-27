@@ -6,18 +6,24 @@ import { getGeneralPath } from '../router/enrutador.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { crearCarpetas, getNameFile } from '../funcionalidades/crearCarpetas.js';
+import { fileURLToPath } from 'url';
 
-let credenciales = null;
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-async function loadCredenciales() {
+let credenciales;
+
+const loadCredenciales = async () => {
     // Si las credenciales están en memoria, no las volvemos a cargar
     if (!credenciales) {
-        credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesRollingStone.json', 'utf8'));
+        // Cambiar la ruta para ir al directorio raíz y acceder a 'config\credenciales'
+        const filePath = path.join(__dirname, '../..', 'config', 'credenciales', 'credencialesRollingStone.json');
+        credenciales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
     }
     return credenciales;
-}
+};
 
-export async function descargarPDF(linkDescarga, callback) {
+
+export async function descargarRollingStone(linkDescarga, callback) {
     const { user, password } = await loadCredenciales(); // Cargar las credenciales desde la memoria si ya fueron cargadas
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
@@ -30,7 +36,7 @@ export async function descargarPDF(linkDescarga, callback) {
     const page = await browser.newPage();
 
     // Intentar cargar las cookies guardadas de sesiones anteriores
-    const cookiesPath = path.join('C:\\DESCARGAREVISTASJS\\config\\cookies\\', 'cookiesRollingStone.json');
+    const cookiesPath = path.join(__dirname, '../..', 'config', 'cookies', 'cookiesRollingStone.json');
     if (fs.existsSync(cookiesPath)) {
         const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf8'));
         await page.setCookie(...cookies);

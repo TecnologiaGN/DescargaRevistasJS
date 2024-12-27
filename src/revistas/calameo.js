@@ -1,17 +1,31 @@
 import puppeteer from 'puppeteer';
 import axios from 'axios';
 import fs from 'fs';
+import path from 'path';
 import { takeScreenshots } from '../funcionalidades/takeScreenshots.js';
 import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
 import { crearPdf } from '../funcionalidades/crearPdf.js';
 import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
 import { getGeneralPath } from '../router/enrutador.js';
+import { fileURLToPath } from 'url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+let credenciales;
+
+const loadCredenciales = async () => {
+    // Si las credenciales están en memoria, no las volvemos a cargar
+    if (!credenciales) {
+        // Cambiar la ruta para ir al directorio raíz y acceder a 'config\credenciales'
+        const filePath = path.join(__dirname, '../..', 'config', 'credenciales', 'credencialesCalameo.json');
+        credenciales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+    return credenciales;
+};
 
 export async function descargarCalameo(linkDescarga, callback) {
-    const credenciales = JSON.parse(fs.readFileSync('C:\\DESCARGAREVISTASJS\\config\\credenciales\\credencialesCalameo.json', 'utf8'));
-    const user = credenciales.user;
-    const password = credenciales.password;
+    const { user, password } = await loadCredenciales();
 
     const generalPath = getGeneralPath();
     await eliminarArchivos(generalPath);
@@ -23,6 +37,7 @@ export async function descargarCalameo(linkDescarga, callback) {
     const originalLinks = [];
 
     mandarMensaje('Estableciendo conexión, pronto comenzará la descarga...', callback);
+    mandarMensaje('Calameo sale el PDF ordenado.', callback);
 
     // Escuchar las solicitudes de red
     page.on('response', response => {

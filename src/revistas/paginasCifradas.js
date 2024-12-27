@@ -11,7 +11,6 @@ import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
 import { loginSemana } from '../funcionalidades/loginSemana.js';
 
 let formato = '';
-let largestWidth = 0;
 let linkDescargaiFrame;
 
 export async function descargarPaginasCifradas(linkDescarga, callback) {
@@ -34,27 +33,8 @@ export async function descargarPaginasCifradas(linkDescarga, callback) {
     page.on('response', async response => {
         const url = response.url();
         if (response.request().method() === 'GET' && (url.includes('original') || (url.includes('.webp') && url.includes('/large/')) || (url.includes('page=') && url.includes('/img?') && url.includes('scale=') && url.includes('ticket')))) {
-
-            if (getArchivo() === 'clarin') {
-                // Extrae el valor de `w=` usando una expresión regular
-                const widthMatch = url.match(/scale=(\d+)/);
-                if (widthMatch) {
-                    const width = parseInt(widthMatch[1], 10);
-        
-                    if (width > largestWidth) {
-                        // Actualiza el mayor ancho encontrado y resetea el array con el nuevo valor más alto
-                        largestWidth = width;
-                        originalLinks = [url]; // Reinicia el array con el enlace actual
-                    } else if (width === largestWidth) {
-                        // Solo agrega el enlace si tiene el mismo ancho máximo
-                        originalLinks.push(url);
-                    }
-                }
-                mandarMensaje(`Respuesta recibida desde: ${url} (ancho más grande encontrado: ${largestWidth})`, callback);
-            } else {
-                mandarMensaje(`Respuesta recibida desde: ${url}`, callback);
-                originalLinks.push(url);
-            }
+            mandarMensaje(`Respuesta recibida desde: ${url}`, callback);
+            originalLinks.push(url);
         }
     });
 
