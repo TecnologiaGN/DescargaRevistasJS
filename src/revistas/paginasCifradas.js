@@ -119,7 +119,7 @@ export async function descargarPaginasCifradas(linkDescarga, callback) {
     // Crear un nuevo PDF
     mandarMensaje('Creándose PDF, espera...', callback);
     await waitFor(5000);
-    if (getArchivo() === 'semana') await waitFor (5000);
+    if (getArchivo() === 'semana') await waitFor (10000);
     await crearPdf(jpgPaths, networkPath, callback);
     mandarMensaje('PDF creado exitosamente en la ruta de red.', callback);
     mandarMensaje('ORDENA EL PDF!!!.', callback)

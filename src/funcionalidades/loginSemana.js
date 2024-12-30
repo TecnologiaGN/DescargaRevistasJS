@@ -25,7 +25,7 @@ export async function loginSemana(linkDescarga) {
     const page = await browser.newPage();
 
     // Intentar cargar las cookies guardadas de sesiones anteriores
-    const cookiesPath = path.join(__dirname, '../..', 'config', 'credenciales', 'cookiesSemana.json');
+    const cookiesPath = path.join(__dirname, '../..', 'config', 'cookies', 'cookiesSemana.json');
     if (fs.existsSync(cookiesPath)) {
         const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf8'));
         console.log("Cookies cargadas:", cookies);  // Verifica si las cookies se están cargando correctamente
