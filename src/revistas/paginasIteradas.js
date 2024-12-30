@@ -29,7 +29,7 @@ export async function descargarPaginasIteradas(linkDescarga, callback) {
     page.on('response', response => {
         const url = response.url();
         if (response.request().method() === 'GET' &&
-            (url.includes('original') || url.includes('.jpg?') || regex.test(url) || (url.includes('page=') && url.includes('/img?') && url.includes('w=')))) {
+            (url.includes('original') || url.includes('.jpg?') && !url.includes('thumb') || regex.test(url) || (url.includes('page=') && url.includes('/img?') && url.includes('w=')))) {
             if (getArchivo() === 'googleDrive') {
                 // Extrae el valor de `w=` usando una expresión regular
                 const widthMatch = url.match(/w=(\d+)/);
@@ -102,7 +102,7 @@ export async function descargarPaginasIteradas(linkDescarga, callback) {
         if (getArchivo() === 'flipsnack') {
             newUrl = url.replace(/page_\d+/, `page_${pageNumber}`); // para flipsnack
         } else if (getArchivo() === 'camacol') {
-            newUrl = url.replace(/page\/\d+/, `page/${pageNumber}`); // para camacol
+            newUrl = url.replace(/page\/\d+/, `page/${pageNumber}`)
         } else if (getArchivo() === 'issuu') {
             newUrl = url.replace(/page_\d+/, `page_${pageNumber}`); // para issuu
             formato = 'webp'
