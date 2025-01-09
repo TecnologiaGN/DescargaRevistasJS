@@ -29,7 +29,7 @@ export async function descargarPaginasIteradas(linkDescarga, callback) {
     page.on('response', response => {
         const url = response.url();
         if (response.request().method() === 'GET' &&
-            (url.includes('original') || url.includes('.jpg?') && !url.includes('thumb') || regex.test(url) || (url.includes('page=') && url.includes('/img?') && url.includes('w=')))) {
+            (url.includes('original') || url.includes('.jpg?') && !url.includes('thumb') && !url.includes('extfile') || regex.test(url) || (url.includes('page=') && url.includes('/img?') && url.includes('w=')))) {
             if (getArchivo() === 'googleDrive') {
                 // Extrae el valor de `w=` usando una expresión regular
                 const widthMatch = url.match(/w=(\d+)/);

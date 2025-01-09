@@ -89,7 +89,7 @@ export async function descargarTabloide(linkDescarga, callback) {
         console.log('Ya está logueado o ocurrió un error al intentar loguearse', error.message);
     }
 
-    await waitFor(10000);
+    await waitFor(15000);
     await page.evaluate((link) => {window.location.href = link}, linkDescarga);
     await page.waitForNavigation({ waitUntil: 'networkidle2' });
     await waitFor(5000)
