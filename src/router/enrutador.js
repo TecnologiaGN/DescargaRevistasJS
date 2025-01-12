@@ -21,7 +21,7 @@ export async function setArchivo(nuevoNombre) {
 }
 export async function descargar(linkDescarga, callback) {
     if (_archivo === 'flipsnack' || _archivo === 'camacol' || _archivo === 'issuu' || _archivo === 'yumpu' || _archivo === 'googleDrive') {await descargarPaginasIteradas(linkDescarga, callback)} // Páginas iteradas
-    else if (_archivo === 'anyflip' || _archivo === 'semana' || _archivo === "fliphtml5") {await descargarPaginasCifradas(linkDescarga, callback)} // Páginas cifradas
+    else if (_archivo === 'anyflip' || _archivo === 'semana' || _archivo === "fliphtml5" || _archivo === 'eldiario') {await descargarPaginasCifradas(linkDescarga, callback)} // Páginas cifradas
     else if (_archivo === 'heyzine' || _archivo === 'ladevi') {await descargarPaginasBlob(linkDescarga, callback)} // URLs Blob cifradas
     else if (_archivo === 'calameo') {await descargarCalameo(linkDescarga, callback)} // Screenshot
     else if (_archivo === 'tabloide') {await descargarTabloide(linkDescarga, callback)} // Sólo toma el PDF y ya.
