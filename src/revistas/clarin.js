@@ -212,4 +212,5 @@ export async function descargarClarin(linkDescarga, callback) {
 
     // Cerrar el navegador
     await browser.close();
+    mandarMensaje('Puppeter Cerrado, ya puedes ingresar otro link.', callback)
 }

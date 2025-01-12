@@ -122,4 +122,5 @@ while (true) {
 
     // Cerrar el navegador
     await browser.close();
+    mandarMensaje('Puppeter Cerrado, ya puedes ingresar otro link.', callback)
 }

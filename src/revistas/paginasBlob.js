@@ -142,4 +142,5 @@ export async function descargarPaginasBlob(linkDescarga, callback) {
     mandarMensaje('ORDENA EL PDF!!!.', callback)
     
     await browser.close();
+    mandarMensaje('Puppeter Cerrado, ya puedes ingresar otro link.', callback)
 }
