@@ -1,3 +1,5 @@
 node_modules/
 .vs/
-config/cookies
+config/cookies/cookiesRollingStone.json
+config/cookies/cookiesSemana.json
+config/cookies/cookiesTabloide.json
