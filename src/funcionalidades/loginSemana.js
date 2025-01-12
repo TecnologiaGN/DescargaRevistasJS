@@ -78,7 +78,7 @@ export async function loginSemana(linkDescarga) {
 
         // Esperar a que el iframe esté cargado y extraer el enlace
         await page.waitForSelector('iframe');
-        const iframeSrc = await page.$eval('iframe[src*="fliphtl5.com"]', iframe => iframe.src);
+        const iframeSrc = await page.$eval('iframe[src*="fliphtml5.com"]', iframe => iframe.src);
 
         // Imprimir el enlace extraído
         console.log('Enlace del iframe:', iframeSrc);
