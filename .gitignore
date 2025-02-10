@@ -1,6 +1,4 @@
 node_modules/
 .vs/
-config/cookies/cookiesPressreader.json
-config/cookies/cookiesRollingStone.json
-config/cookies/cookiesSemana.json
-config/cookies/cookiesTabloide.json
+
+config/cookies/*.json

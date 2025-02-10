@@ -8,7 +8,6 @@ import { getArchivo } from '../router/enrutador.js';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 let credenciales;
 let formato = 'webp';
-let largestWidth = 0;
 let mayorPagina = 0;
 let stopClickNextButton = false;
 let [webpPaths, imagePaths, originalLinks] = [[], [], []]
@@ -55,6 +54,7 @@ export async function descargarClarin(linkDescarga, callback, page, networkPath)
                 console.log('Se llamó la función validacionPaginasActivada')
                 validacionPaginasActivada = false;
                 let paginaAEvaluar = currentPage + 1; // Se evalua si va a existir la siguiente página
+                console.log('mayorPagina es: ', mayorPagina)
                 if (paginaAEvaluar > mayorPagina) {
                     mayorPagina = paginaAEvaluar
                 } else {
@@ -82,25 +82,25 @@ export async function descargarClarin(linkDescarga, callback, page, networkPath)
             //--------------------------------------------------------------------------------------------
             // Extrae el valor de `scale=` usando una expresión regular
             const widthMatch = url.match(/scale=(\d+)/);
+            let pageMaxScale = {}; // Guarda el scale máximo encontrado por cada página
+            
             if (widthMatch) {
                 const width = parseInt(widthMatch[1], 10);
-                if (width > largestWidth) {
-                    // Actualiza el mayor ancho encontrado y resetea el array con el nuevo valor más alto
-                    largestWidth = width;
-                    originalLinks = [url]; // Reinicia el array con el enlace actual
-                    console.log('se ha reiniciado el array con un scale más grande.')
-                } else if (width === largestWidth) {
-                    // Si tiene el scale máximo
-                    if (originalLinks.length === 0) originalLinks.push(url); // Agrega al array si está vacío
-                    // Recorrer todas las URLs y solo agregar una por página
-                    let isPageExist = originalLinks.some(originalLink => getPageNumber(originalLink) === currentPage);
-                    // Si el 'page=' no existe en el array, agregar el nuevo enlace
-                    if (!isPageExist) {
-                        originalLinks.push(url);
-                        mandarMensaje("Enlace agregado: " + url, callback);
-                    } 
+                const currentPageNumber = getPageNumber(url); // Obtiene el número de página
+            
+                if (!pageMaxScale[currentPageNumber] || width > pageMaxScale[currentPageNumber]) {
+                    // Si la página no tiene un scale registrado o encontramos un scale mayor, actualizamos
+                    pageMaxScale[currentPageNumber] = width;
+            
+                    // Reemplazar el enlace de la página en el array `originalLinks`
+                    originalLinks = originalLinks.filter(link => getPageNumber(link) !== currentPageNumber);
+                    originalLinks.push(url);
+            
+                    console.log(`Nuevo scale máximo (${width}) encontrado para página ${currentPageNumber}, reemplazando enlace.`);
+                    mandarMensaje(`Enlace actualizado para página ${currentPageNumber}: ${url}`, callback);
                 }
             }
+            
             // mandarMensaje(`Respuesta recibida desde: ${url} (ancho más grande encontrado: ${largestWidth})`, callback);
         }
     });
@@ -112,13 +112,18 @@ export async function descargarClarin(linkDescarga, callback, page, networkPath)
     if (getArchivo() === 'pressreader') {
         mandarMensaje('Iniciando Login, espera por fa.', callback)
         // Usuario contraseña
-        await page.click('span[data-bind="text: $.nd.res.val(\'ToolbarTop.SigIn\')"]')
-        await page.type('input[id="SignInEmailAddress"]', user);
-        await page.type('input[data-bind*="signIn.password"]', password);
-        await page.click('button[data-bind*="Dialogs.Signin.Signin"]');
-        await waitFor(10000);
-        const cookies = await page.cookies();
-        fs.writeFileSync(cookiesPath, JSON.stringify(cookies));
+        try {
+            await page.click('span[data-bind="text: $.nd.res.val(\'ToolbarTop.SigIn\')"]')
+            await page.type('input[id="SignInEmailAddress"]', user);
+            await page.type('input[data-bind*="signIn.password"]', password);
+            await page.click('button[data-bind*="Dialogs.Signin.Signin"]');
+            await waitFor(10000);
+            const cookies = await page.cookies();
+            fs.writeFileSync(cookiesPath, JSON.stringify(cookies));
+        }
+        catch (error) {
+            console.error('Posible log realizado: ', error)
+        }
     }
 
     // Función para hacer clic en la flecha derecha y esperar
@@ -128,13 +133,13 @@ export async function descargarClarin(linkDescarga, callback, page, networkPath)
         // await button.click();
         await page.keyboard.press('ArrowRight');
         await waitFor(2000)
-        await page.mouse.click(100, 80) // clic a la izquierda
+        await page.mouse.click(200, 65) // clic a la izquierda
         await waitFor(2000)
-        await page.mouse.click(100, 80) // clic a la izquierda
+        await page.mouse.click(200, 65) // clic a la izquierda
         await waitFor(2000)
-        await page.mouse.click(500, 80) // clic a la derecha
+        await page.mouse.click(500, 65) // clic a la derecha
         await waitFor(2000)
-        await page.mouse.click(500, 80) // clic a la derecha
+        await page.mouse.click(500, 65) // clic a la derecha
         await waitFor(2000)
     };
 
@@ -211,5 +216,7 @@ export async function descargarClarin(linkDescarga, callback, page, networkPath)
     webpPaths.length = 0;
     imagePaths.length = 0;
     originalLinks.length = 0;
+    mayorPagina = 0;
+    stopClickNextButton = false;
     return result;
 }
