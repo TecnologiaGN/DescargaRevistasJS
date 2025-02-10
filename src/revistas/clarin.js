@@ -1,222 +1,215 @@
-import puppeteer from 'puppeteer';
 import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
-import { getGeneralPath } from '../router/enrutador.js';
 import { mandarMensaje } from '../funcionalidades/mandarMensaje.js';
-import { crearPdf } from '../funcionalidades/crearPdf.js';
-import { webpAjpg } from '../funcionalidades/webpAjpg.js';
-import { eliminarArchivos } from '../funcionalidades/eliminarArchivos.js';
-import { crearCarpetas } from '../funcionalidades/crearCarpetas.js';
+import { fileURLToPath } from 'url';
+import { getArchivo } from '../router/enrutador.js';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+let credenciales;
 let formato = 'webp';
 let largestWidth = 0;
 let mayorPagina = 0;
 let stopClickNextButton = false;
-let browser;
-let originalLinks = [];
-let jpgPaths = [];
-let imagePaths = [];
+let [webpPaths, imagePaths, originalLinks] = [[], [], []]
 
-export async function descargarClarin(linkDescarga, callback) {
-    try {
-        const generalPath = getGeneralPath();
-        await eliminarArchivos(generalPath);
-        const networkPath = await crearCarpetas();
-        console.log('El networkpath es: ' + networkPath)
-        mandarMensaje('URLs cifradas, el PDF sale ordenado. Espera por fa.', callback);
-        mandarMensaje('Hay una miniatura de la revista con todas las páginas, la debes buscar y ELIMINAR!!!', callback)      
-        // Lanzar un nuevo navegador
-        browser = await puppeteer.launch({ headless: false });
-        const page = await browser.newPage();
+const loadCredenciales = async () => {
+    // Si las credenciales están en memoria, no las volvemos a cargar
+    if (!credenciales) {
+        // Cambiar la ruta para ir al directorio raíz y acceder a 'config\credenciales'
+        const filePath = path.join(__dirname, '../..', 'config', 'credenciales', 'credencialesPressreader.json');
+        credenciales = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    }
+    return credenciales;
+};
 
-        let validacionPaginasActivada = true;
+export async function descargarClarin(linkDescarga, callback, page, networkPath) {
+    const { user, password } = await loadCredenciales();
+    mandarMensaje('URLs cifradas, el PDF sale ordenado. Espera por fa.', callback);
+    mandarMensaje('Hay una miniatura de la revista con todas las páginas, la debes buscar y ELIMINAR!!!', callback);     
+    
+    // Intentar cargar las cookies guardadas de sesiones anteriores
+    const cookiesPath = path.join(__dirname, '../..', 'config', 'cookies', 'cookiesPressreader.json');
+    if (fs.existsSync(cookiesPath)) {
+        const cookies = JSON.parse(fs.readFileSync(cookiesPath, 'utf8'));
+        await page.setCookie(...cookies);
+    }
 
-        // Obtiene el número de la página del link
-        function getPageNumber(url) {
-            const pageMatch = url.match(/page=(\d+)/);
-            return pageMatch ? parseInt(pageMatch[1], 10) : null;
-        }
+    let validacionPaginasActivada = true;
 
-        // Escuchar las solicitudes de red
-        page.on('response', async response => {
-            const url = response.url();
-            if (response.request().method() === 'GET' && (url.includes('page=') && url.includes('/img?') && url.includes('scale=') && url.includes('ticket'))) {
-                //------------------------------------------TIEMPO-------------------------------------------
+    // Obtiene el número de la página del link
+    function getPageNumber(url) {
+        const pageMatch = url.match(/page=(\d+)/);
+        return pageMatch ? parseInt(pageMatch[1], 10) : null;
+    }
 
-                const currentPage = getPageNumber(url);
+    // Escuchar las solicitudes de red
+    page.on('response', async response => {
+        const url = response.url();
+        if (response.request().method() === 'GET' && (url.includes('page=') && url.includes('/img?') && url.includes('scale=') && url.includes('ticket'))) {
 
-                // 
-                if (validacionPaginasActivada) {
-                    console.log('Se llamó la función validacionPaginasActivada')
-                    validacionPaginasActivada = false;
-                    let paginaAEvaluar = currentPage + 1;
-                    if (paginaAEvaluar > mayorPagina) {
-                        mayorPagina = paginaAEvaluar
-                    } else {
-                        stopClickNextButton = true;
-                    }
-                    console.log('contando... ' + ' La página evaluando es: ' + paginaAEvaluar)
-                    console.log(`Evaluando: &page=${paginaAEvaluar}&`)
+            const currentPage = getPageNumber(url);
 
-                    // Comprueba si tiempo después hay un indice nuevo de página
-                    setTimeout(() => {
-                        console.log("La condición ha sido verificada después de 10 segundos");
-                        console.log("Los links que hay son: ");
-                        console.log (originalLinks);
-
-                        for (let i = 0; i < originalLinks.length; i++) {
-                            if (originalLinks[i].includes(`page=${paginaAEvaluar}`)) {
-                                console.log('Se han encontrado más páginas, el proceso continua');
-                                break;
-                            } 
-                        }
-                        validacionPaginasActivada = true                 
-                    }, 30000);
+            // Se valida si hay más páginas
+            if (validacionPaginasActivada) {
+                console.log('Se llamó la función validacionPaginasActivada')
+                validacionPaginasActivada = false;
+                let paginaAEvaluar = currentPage + 1; // Se evalua si va a existir la siguiente página
+                if (paginaAEvaluar > mayorPagina) {
+                    mayorPagina = paginaAEvaluar
+                } else {
+                    stopClickNextButton = true; // Para el cambio de página si no existe
                 }
+                console.log('contando... ' + ' La página evaluando es: ' + paginaAEvaluar)
+                console.log(`Evaluando: &page=${paginaAEvaluar}&`)
 
-                //--------------------------------------------------------------------------------------------
-                // Extrae el valor de `scale=` usando una expresión regular
-                const widthMatch = url.match(/scale=(\d+)/);
-                if (widthMatch) {
-                    const width = parseInt(widthMatch[1], 10);
-                    if (width > largestWidth) {
-                        // Actualiza el mayor ancho encontrado y resetea el array con el nuevo valor más alto
-                        largestWidth = width;
-                        originalLinks = [url]; // Reinicia el array con el enlace actual
-                        console.log('se ha reiniciado el array con un scale más grande.')
-                    } else if (width === largestWidth) {
-                        // Si tiene el scale máximo
-                        if (originalLinks.length === 0) originalLinks.push(url); // Agrega al array si está vacío
-                        // Recorrer todas las URLs y solo agregar una por página
-                        let isPageExist = originalLinks.some(originalLink => getPageNumber(originalLink) === currentPage);
-                        // Si el 'page=' no existe en el array, agregar el nuevo enlace
-                        if (!isPageExist) {
-                            originalLinks.push(url);
-                            mandarMensaje("Enlace agregado: " + url, callback);
+                // Comprueba si tiempo después hay un indice nuevo de página
+                setTimeout(() => {
+                    console.log("La condición ha sido verificada después de 10 segundos");
+                    console.log("Los links que hay son: ");
+                    console.log (originalLinks);
+
+                    for (let i = 0; i < originalLinks.length; i++) {
+                        if (originalLinks[i].includes(`page=${paginaAEvaluar}`)) {
+                            console.log('Se han encontrado más páginas, el proceso continua');
+                            break;
                         } 
                     }
+                    validacionPaginasActivada = true // Después de 10 segudos vuelve a evaluar                 
+                }, 30000);
+            }
+
+            //--------------------------------------------------------------------------------------------
+            // Extrae el valor de `scale=` usando una expresión regular
+            const widthMatch = url.match(/scale=(\d+)/);
+            if (widthMatch) {
+                const width = parseInt(widthMatch[1], 10);
+                if (width > largestWidth) {
+                    // Actualiza el mayor ancho encontrado y resetea el array con el nuevo valor más alto
+                    largestWidth = width;
+                    originalLinks = [url]; // Reinicia el array con el enlace actual
+                    console.log('se ha reiniciado el array con un scale más grande.')
+                } else if (width === largestWidth) {
+                    // Si tiene el scale máximo
+                    if (originalLinks.length === 0) originalLinks.push(url); // Agrega al array si está vacío
+                    // Recorrer todas las URLs y solo agregar una por página
+                    let isPageExist = originalLinks.some(originalLink => getPageNumber(originalLink) === currentPage);
+                    // Si el 'page=' no existe en el array, agregar el nuevo enlace
+                    if (!isPageExist) {
+                        originalLinks.push(url);
+                        mandarMensaje("Enlace agregado: " + url, callback);
+                    } 
                 }
-                // mandarMensaje(`Respuesta recibida desde: ${url} (ancho más grande encontrado: ${largestWidth})`, callback);
             }
-        });
-
-        // Navegar a la página específica
-        await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
-
-        // Se crea waitFor para esperar dentro puppeter
-        const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-
-        // Función para hacer clic en la flecha derecha y esperar
-        const clickNextButton = async () => {
-            await waitFor(1000)
-            // const button = await page.$('.readingnav.rn-right')
-            // await button.click();
-            await page.keyboard.press('ArrowRight');
-            await waitFor(2000)
-            await page.mouse.click(100, 70) // clic a la izquierda
-            await waitFor(2000)
-            await page.mouse.click(100, 70) // clic a la izquierda
-            await waitFor(2000)
-            await page.mouse.click(500, 70) // clic a la derecha
-            await waitFor(2000)
-            await page.mouse.click(500, 70) // clic a la derecha
-            await waitFor(2000)
-        };
-
-        // Repetir clic en el botón correr página
-        for (let i = 0; i < 500; i++) { // Cambiar por veces a intentar
-            await clickNextButton();
-            if (stopClickNextButton) {
-                console.log('Se ha parado hijos de fruta!!')
-                break;
-            }
+            // mandarMensaje(`Respuesta recibida desde: ${url} (ancho más grande encontrado: ${largestWidth})`, callback);
         }
+    });
 
-        // Arreglar el array
-        // Paso 1: Agregar un nuevo enlace con `page=1`
-        let newLink = originalLinks[0].replace(/page=\d+/, "page=1");
-        let paginaUno = newLink.replace(/(&scale=\d+).*$/, '$1');
-        originalLinks.push(paginaUno);
-        // Paso 2: Eliminar `&scale=x&` y `&ticket=...` de cada URL
-        originalLinks = originalLinks.map(url => url.replace(/&left=[^&]+&top=[^&]+&right=[^&]+&bottom=[^&]+/, ''));
-        // Paso 3: Ordenar las URLs por el valor de `page`
-        originalLinks.sort((a, b) => {
-            let pageA = parseInt(a.match(/page=(\d+)/)[1], 10);
-            let pageB = parseInt(b.match(/page=(\d+)/)[1], 10);
-            return pageA - pageB;
-        });
+    await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
+    const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        console.log(originalLinks);
-
-        // Tomar el primer enlace
-        const firstLink = originalLinks[0];
-        mandarMensaje(`Descargando desde: ${firstLink}`, callback);
-
-        // Función para descargar la imagen
-        const downloadImage = async (pageNumber) => {
-            const newUrl = originalLinks[pageNumber-1];
-            mandarMensaje(newUrl, callback);
-            if(originalLinks[0].includes('.webp')) formato = 'webp';
-            try {
-                console.log('newUrl: ' + newUrl)
-                // Configura los encabezados para simular una solicitud desde un navegador
-                const response = await axios.get(newUrl, {
-                    responseType: 'arraybuffer',
-                    headers: {
-                        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
-                    }
-                });
-                const filePath = path.join(networkPath, `page_${pageNumber}.${formato}`); // Guardar en ruta de red
-                fs.writeFileSync(filePath, response.data);
-                return filePath;
-            } catch (error) {
-                console.error(`Error al descargar la página ${pageNumber}:`, error.message);
-                return null; // Retornar null si hay un error
-            }
-        };
-
-        mandarMensaje('Realizando procesos de conversión, espera por favor', callback);
-        let pageNumber = 1;
-        while (true) {
-            if (pageNumber > originalLinks.length) {
-                mandarMensaje('No hay más enlaces para descargar.', callback);
-                if (formato = 'webp') jpgPaths = await webpAjpg(imagePaths, callback);
-                break; // Romper el bucle si no hay más enlaces
-            }
-            const result = await downloadImage(pageNumber);
-            if (result === null) break// Salir si hay un error
-            mandarMensaje(`Página ${pageNumber} descargada.`, callback);
-            imagePaths.push(result);
-            pageNumber++;
-        }
-    // Limpiar imágenes descargadas
-        await new Promise(resolve => setTimeout(resolve, 5000));
-        try {
-            imagePaths.forEach(imagePath => fs.unlinkSync(imagePath));
-            console.log('Archivos Webp eliminados correctamente.')
-        } catch (error) {
-            console.error('error al eliminar los webp: ' + error.message)
-        }
-
-        // Crear un nuevo PDF
-        mandarMensaje('Creándose PDF, espera...', callback);
-        await waitFor(5000);
-        await crearPdf(jpgPaths, networkPath, callback);
-        mandarMensaje('PDF creado exitosamente en la ruta de red.', callback);
-        mandarMensaje('PDF Ordenado.', callback)
-    } 
-    
-    catch (error) {
-        console.error('Ocurrió un error en la función de descarga:', error.message);
-    } 
-    
-    finally {
-        originalLinks = [];
-        jpgPaths = [];
-        imagePaths = [];
-        await browser.close();
-        browser = null;
-        mandarMensaje('Puppeter Cerrado, ya puedes ingresar otro link.', callback)
+    await waitFor(5000);
+    if (getArchivo() === 'pressreader') {
+        mandarMensaje('Iniciando Login, espera por fa.', callback)
+        // Usuario contraseña
+        await page.click('span[data-bind="text: $.nd.res.val(\'ToolbarTop.SigIn\')"]')
+        await page.type('input[id="SignInEmailAddress"]', user);
+        await page.type('input[data-bind*="signIn.password"]', password);
+        await page.click('button[data-bind*="Dialogs.Signin.Signin"]');
+        await waitFor(10000);
+        const cookies = await page.cookies();
+        fs.writeFileSync(cookiesPath, JSON.stringify(cookies));
     }
+
+    // Función para hacer clic en la flecha derecha y esperar
+    const clickNextButton = async () => {
+        await waitFor(1000)
+        // const button = await page.$('.readingnav.rn-right')
+        // await button.click();
+        await page.keyboard.press('ArrowRight');
+        await waitFor(2000)
+        await page.mouse.click(100, 80) // clic a la izquierda
+        await waitFor(2000)
+        await page.mouse.click(100, 80) // clic a la izquierda
+        await waitFor(2000)
+        await page.mouse.click(500, 80) // clic a la derecha
+        await waitFor(2000)
+        await page.mouse.click(500, 80) // clic a la derecha
+        await waitFor(2000)
+    };
+
+    // Repetir clic en el botón correr página
+    for (let i = 0; i < 500; i++) { // Cambiar por veces a intentar
+        await clickNextButton();
+        if (stopClickNextButton) {
+            console.log('Se ha parado hijos de fruta!!')
+            break;
+        }
+    }
+
+    // Arreglar el array
+    // Paso 1: Agregar un nuevo enlace con `page=1`
+    let newLink = originalLinks[0].replace(/page=\d+/, "page=1");
+    let paginaUno = newLink.replace(/(&scale=\d+).*$/, '$1');
+    originalLinks.push(paginaUno);
+    // Paso 2: Eliminar `left, top, right y bottom` de cada URL
+    originalLinks = originalLinks.map(url => url.replace(/&left=[^&]+&top=[^&]+&right=[^&]+&bottom=[^&]+/, ''));
+    // Paso 3: Ordenar las URLs por el valor de `page`
+    originalLinks.sort((a, b) => {
+        let pageA = parseInt(a.match(/page=(\d+)/)[1], 10);
+        let pageB = parseInt(b.match(/page=(\d+)/)[1], 10);
+        return pageA - pageB;
+    });
+
+    console.log(originalLinks);
+
+    // Tomar el primer enlace
+    mandarMensaje(`Descargando desde: ${originalLinks[0]}`, callback);
+
+    // Función para descargar la imagen
+    const downloadImage = async (pageNumber) => {
+        const newUrl = originalLinks[pageNumber-1];
+        mandarMensaje(newUrl, callback);
+        if(originalLinks[0].includes('.webp')) formato = 'webp';
+        try {
+            console.log('newUrl: ' + newUrl)
+            // Configura los encabezados para simular una solicitud desde un navegador
+            const response = await axios.get(newUrl, {
+                responseType: 'arraybuffer',
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+                }
+            });
+            const filePath = path.join(networkPath, `page_${pageNumber}.${formato}`); // Guardar en ruta de red
+            fs.writeFileSync(filePath, response.data);
+            return filePath;
+        } catch (error) {
+            console.error(`Error al descargar la página ${pageNumber}:`, error.message);
+            return null; // Retornar null si hay un error
+        }
+    };
+
+    mandarMensaje('Realizando procesos de conversión, espera por favor', callback);
+    let pageNumber = 1;
+    while (true) {
+        if (pageNumber > originalLinks.length) {
+            mandarMensaje('No hay más enlaces para descargar.', callback);
+            break; // Romper el bucle si no hay más enlaces
+        }
+        const result = await downloadImage(pageNumber);
+        if (result === null) break// Salir si hay un error
+        mandarMensaje(`Página ${pageNumber} descargada.`, callback);
+        if (formato = 'webp') {
+            webpPaths.push(result)
+        } else if (formato = 'jpg') {
+            imagePaths.push(result)
+        }
+        pageNumber++;
+        }
+    // Limpiar y retornar
+    const result = { webpPaths: [...webpPaths], imagePaths: [...imagePaths]}
+    webpPaths.length = 0;
+    imagePaths.length = 0;
+    originalLinks.length = 0;
+    return result;
 }

@@ -8,6 +8,7 @@ import http from 'http';
 import { Server } from 'socket.io';
 
 import fs from 'fs';
+import { main } from './src/main.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -39,7 +40,7 @@ app.post('/descargar', async (req, res) => {
     io.emit('output', 'Iniciando descarga...');
 
     try {
-        await descargar(linkDescarga, (output) => {
+        await main(linkDescarga, (output) => {
             io.emit('output', output); // Envía cada mensaje de la descarga
         });
         res.send('Descarga realizada exitosamente.');

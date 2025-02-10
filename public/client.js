@@ -45,6 +45,7 @@ async function manejarDescarga() {
             else if (linkDescarga.includes('yumpu.com') && linkDescarga.includes('embed')) archivoEnrutador = 'yumpu2';
             else if (linkDescarga.includes('drive.google.com')) archivoEnrutador = 'googleDrive';
             else if (linkDescarga.includes('clarin.com')) archivoEnrutador = 'clarin';
+            else if (linkDescarga.includes('pressreader.com')) archivoEnrutador = 'pressreader';
             else if (linkDescarga.includes('rollingstone.com')) archivoEnrutador = 'rollingStone';
             else if (linkDescarga.includes('eldiario')) archivoEnrutador = 'eldiario';
 
@@ -69,8 +70,13 @@ async function manejarDescarga() {
             });
             const result = await response.text();
             avisos(result);
-            // Abrir el enlace de descarga en una nueva pestaña
-            window.open(`/descargar-archivo/${archivoEnrutador}.pdf`, '_blank');
+            // Intenta descargar el archivo solo si no hay error en la respuesta del servidor
+            const descargarArchivo = await fetch(`/descargar-archivo/${archivoEnrutador}.pdf`);
+            if (descargarArchivo.ok) {
+                window.open(`/descargar-archivo/${archivoEnrutador}.pdf`, '_blank');
+            } else {
+                avisos('No se pudo descargar el archivo. Verifica si existe.');
+            }
         } else {
             avisos('Enlace no válido.');
         }

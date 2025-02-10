@@ -19,13 +19,36 @@ export function getArchivo() {
 export async function setArchivo(nuevoNombre) {
     _archivo = nuevoNombre;
 }
-export async function descargar(linkDescarga, callback) {
-    if (_archivo === 'flipsnack' || _archivo === 'camacol' || _archivo === 'issuu' || _archivo === 'yumpu' || _archivo === 'googleDrive') {await descargarPaginasIteradas(linkDescarga, callback)} // Páginas iteradas
-    else if (_archivo === 'anyflip' || _archivo === 'semana' || _archivo === "fliphtml5" || _archivo === 'eldiario') {await descargarPaginasCifradas(linkDescarga, callback)} // Páginas cifradas
-    else if (_archivo === 'heyzine' || _archivo === 'ladevi') {await descargarPaginasBlob(linkDescarga, callback)} // URLs Blob cifradas
-    else if (_archivo === 'calameo') {await descargarCalameo(linkDescarga, callback)} // Screenshot
-    else if (_archivo === 'tabloide') {await descargarTabloide(linkDescarga, callback)} // Sólo toma el PDF y ya.
-    else if (_archivo === 'clarin') {await descargarClarin(linkDescarga, callback)}
-    else if (_archivo === 'yumpu2') {await descargarYumpu(linkDescarga, callback)}
-    else if (_archivo === 'rollingStone') {await descargarRollingStone(linkDescarga, callback)}
+export async function descargar(linkDescarga, callback, page, networkPath) {
+    let webpPaths, imagePaths;
+
+    // Mapa de archivos y sus respectivas funciones de descarga
+    const downloadFunctions = {
+        'flipsnack': descargarPaginasIteradas,
+        'camacol': descargarPaginasIteradas,
+        'issuu': descargarPaginasIteradas,
+        'yumpu': descargarPaginasIteradas,
+        'googleDrive': descargarPaginasIteradas,
+        'anyflip': descargarPaginasCifradas,
+        'semana': descargarPaginasCifradas,
+        'fliphtml5': descargarPaginasCifradas,
+        'eldiario': descargarPaginasCifradas,
+        'heyzine': descargarPaginasBlob,
+        'ladevi': descargarPaginasBlob,
+        'calameo': descargarCalameo,
+        'tabloide': descargarTabloide,
+        'clarin': descargarClarin,
+        'pressreader': descargarClarin,
+        'yumpu2': descargarYumpu,
+        'rollingStone': descargarRollingStone
+    };
+    // Verificar si la función existe en el mapa
+    if (downloadFunctions[_archivo]) {
+        const result = await downloadFunctions[_archivo](linkDescarga, callback, page, networkPath);
+        webpPaths = result.webpPaths;
+        imagePaths = result.imagePaths;
+    } else {
+        console.error(`Función no definida para el archivo: ${_archivo}`);
+    }
+    return { webpPaths, imagePaths };
 }
