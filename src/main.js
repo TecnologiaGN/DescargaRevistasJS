@@ -47,7 +47,6 @@ export async function main(linkDescarga, callback) {
             mandarMensaje('Creándose PDF, espera...', callback);
             await waitFor(5000)
             await crearPdf(imagePaths, networkPath, callback);
-            mandarMensaje('PDF ORDENADO.', callback)
         }
     } 
 

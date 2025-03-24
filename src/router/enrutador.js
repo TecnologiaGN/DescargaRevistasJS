@@ -6,6 +6,7 @@ import { descargarTabloide } from '../revistas/tabloide.js';
 import { descargarClarin } from '../revistas/clarin.js';
 import { descargarYumpu } from '../revistas/yumpu.js';
 import { descargarRollingStone } from '../revistas/rollingStone.js';
+import { descargarGoogleDrive } from '../revistas/googleDrive.js';
 
 let _archivo = '';
 let _generalPath = '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS';
@@ -28,7 +29,7 @@ export async function descargar(linkDescarga, callback, page, networkPath) {
         'camacol': descargarPaginasIteradas,
         'issuu': descargarPaginasIteradas,
         'yumpu': descargarPaginasIteradas,
-        'googleDrive': descargarPaginasIteradas,
+        'googleDrive': descargarGoogleDrive,
         'anyflip': descargarPaginasCifradas,
         'semana': descargarPaginasCifradas,
         'fliphtml5': descargarPaginasCifradas,
