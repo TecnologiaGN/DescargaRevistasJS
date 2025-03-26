@@ -92,7 +92,7 @@ export async function descargarGoogleDrive(linkDescarga, callback, page, network
     await waitFor(10000);
     
     //-----------------------------PASO-3:FUNCIÓN-DESCARGAR-IMÁGENES-------------------------------
-    let formato = 'jpg';
+    let formato = 'png';
     // Tomar el primer enlace
     const firstLink = originalLinks[0];
     mandarMensaje(`Descargando desde: ${firstLink}`, callback);
@@ -146,7 +146,7 @@ export async function descargarGoogleDrive(linkDescarga, callback, page, network
         const result = await downloadImage(pageNumber);
         if (result === null) break; // Salir si hay un error
         mandarMensaje(`Página ${pageNumber} descargada.`, callback);
-        webpPaths.push(result)
+        imagePaths.push(result)
         pageNumber++;
     }
 
