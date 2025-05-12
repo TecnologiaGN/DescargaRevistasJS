@@ -9,7 +9,7 @@ let validImageUrls = [];
 export async function descargarPaginasBlob(linkDescarga, callback, page, networkPath) {
     mandarMensaje('Links tipo blob, ten paciencia y ordena el PDF al final.', callback)    
     await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 }); // Navegar a la página específica
-    await page.waitForSelector('.page-img-content'); // Se toman los links desde el div del HTML   
+    await page.waitForSelector('.page-img-content', { timeout: 60000 }); // Se toman los links desde el div del HTML   
     const waitFor = (ms) => new Promise(resolve => setTimeout(resolve, ms)); // Se crea waitFor para esperar dentro puppeteer
 
     //-----------------------------------1.-CREACIÓN DE FUNCIONES--------------------------------

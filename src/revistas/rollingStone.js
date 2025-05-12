@@ -60,8 +60,10 @@ export async function descargarRollingStone(linkDescarga, callback, page, networ
         console.log('Ya está logueado o ocurrió un error al intentar loguearse', error.message);
     }
 
-    await waitFor(10000);
-    console.log(originalLinks);
+    await waitFor(5000);
+    await page.goto(linkDescarga, { waitUntil: 'networkidle2', timeout: 340000 });
+    await waitFor(5000);
+    console.log(originalLinks);  
 
     try {
         const response = await axios.get(originalLinks[0], { responseType: 'arraybuffer' });
