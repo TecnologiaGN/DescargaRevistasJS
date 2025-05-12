@@ -60,18 +60,16 @@ app.get('/descargar-archivo/:nombreArchivo', async (req, res) => {
         console.log('filepath en el server: ' + filePath);
 
         // Verifica si el archivo existe
-        fs.stat(filePath, (err, stats) => {
-            if (err || !stats.isFile()) {
-                return res.status(404).send('No se pudo descargar el PDF, pero verifica en la ruta de red, tal vez encuentres el PDF o las imágenes.');
-            }
+        if (!fs.existsSync(filePath)) {
+            return res.status(404).send('No se pudo descargar el PDF, pero verifica en la ruta de red, tal vez encuentres el PDF o las imágenes.');
+        }
 
-            // Envía el archivo como descarga
-            res.download(filePath, (err) => {
-                if (err) {
-                    console.error('Error al descargar el archivo:', err);
-                    res.status(500).send('Error al descargar el archivo');
-                }
-            });
+        // Envía el archivo como descarga
+        res.download(filePath, (err) => {
+            if (err) {
+                console.error('Error al descargar el archivo:', err);
+                // No enviamos otra respuesta aquí, ya que res.download ya habrá iniciado la respuesta
+            }
         });
     } catch (error) {
         console.error('Error al obtener el nombre del archivo:', error);
