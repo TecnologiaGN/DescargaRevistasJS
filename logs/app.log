@@ -1,0 +1,7 @@
+{"timestamp":"2025-05-13T18:03:10.511Z","level":"DEBUG","message":"Mensaje de depuración","component":"test","details":"Información detallada para desarrollo","pid":47628}
+{"timestamp":"2025-05-13T18:03:10.513Z","level":"INFO","message":"Sistema iniciado correctamente","version":"1.0.0","environment":"development","pid":47628}
+{"timestamp":"2025-05-13T18:03:10.514Z","level":"WARNING","message":"Espacio en disco bajo","diskSpace":"15%","threshold":"20%","pid":47628}
+{"timestamp":"2025-05-13T18:03:10.515Z","level":"ERROR","message":"Error al conectar con el servidor","url":"https://ejemplo.com/api","statusCode":500,"pid":47628}
+{"timestamp":"2025-05-13T18:03:10.515Z","level":"CRITICAL","message":"Fallo crítico en la base de datos","db":"main","error":"Connection refused","pid":47628}
+{"timestamp":"2025-05-13T18:03:10.526Z","level":"INFO","message":"Link procesado exitosamente","url":"https://ejemplo.com/revista1","successful":true,"details":"Descarga exitosa","pid":47628}
+{"timestamp":"2025-05-13T18:03:10.526Z","level":"ERROR","message":"Error al procesar link","url":"https://ejemplo.com/revista2","successful":false,"details":"Error: Tiempo de espera agotado","pid":47628}
