@@ -5,3 +5,473 @@
 {"timestamp":"2025-05-13T18:03:10.515Z","level":"CRITICAL","message":"Fallo crítico en la base de datos","db":"main","error":"Connection refused","pid":47628}
 {"timestamp":"2025-05-13T18:03:10.526Z","level":"INFO","message":"Link procesado exitosamente","url":"https://ejemplo.com/revista1","successful":true,"details":"Descarga exitosa","pid":47628}
 {"timestamp":"2025-05-13T18:03:10.526Z","level":"ERROR","message":"Error al procesar link","url":"https://ejemplo.com/revista2","successful":false,"details":"Error: Tiempo de espera agotado","pid":47628}
+{"timestamp":"2025-05-15T04:23:10.013Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/10pzLEZjnmkL3OP8QkJP-QBRe-Wryomhs/view","pid":7844}
+{"timestamp":"2025-05-15T04:23:10.320Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250515_232310","pid":7844}
+{"timestamp":"2025-05-15T04:23:14.433Z","level":"INFO","message":"Navegador iniciado correctamente","pid":7844}
+{"timestamp":"2025-05-15T04:27:40.723Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":7844}
+{"timestamp":"2025-05-15T04:31:51.544Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250515_232310","pid":7844}
+{"timestamp":"2025-05-15T04:31:53.233Z","level":"INFO","message":"Navegador cerrado correctamente","pid":7844}
+{"timestamp":"2025-05-15T04:31:53.238Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/10pzLEZjnmkL3OP8QkJP-QBRe-Wryomhs/view","successful":true,"details":"Operación completada","pid":7844}
+{"timestamp":"2025-05-15T06:24:16.080Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":7844}
+{"timestamp":"2025-05-15T06:24:16.159Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250515_012416","pid":7844}
+{"timestamp":"2025-05-15T06:24:19.570Z","level":"INFO","message":"Navegador iniciado correctamente","pid":7844}
+{"timestamp":"2025-05-15T06:26:43.805Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":7844}
+{"timestamp":"2025-05-15T06:26:53.103Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":7844}
+{"timestamp":"2025-05-15T06:27:05.979Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":7844}
+{"timestamp":"2025-05-15T06:27:25.512Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250515_012416","pid":7844}
+{"timestamp":"2025-05-15T06:27:27.483Z","level":"INFO","message":"Navegador cerrado correctamente","pid":7844}
+{"timestamp":"2025-05-15T06:27:27.486Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":7844}
+{"timestamp":"2025-05-15T17:29:51.128Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://heyzine.com/flip-book/5981a0894a.html#page/10","pid":7844}
+{"timestamp":"2025-05-15T17:29:51.292Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\heyzine20250515_122951","pid":7844}
+{"timestamp":"2025-05-15T17:29:58.974Z","level":"INFO","message":"Navegador iniciado correctamente","pid":7844}
+{"timestamp":"2025-05-15T17:30:05.609Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://heyzine.com/flip-book/5981a0894a.html#page/1","pid":7844}
+{"timestamp":"2025-05-15T17:30:06.822Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\heyzine20250515_123006","pid":7844}
+{"timestamp":"2025-05-15T17:30:36.839Z","level":"ERROR","message":"Error durante el procesamiento","url":"https://heyzine.com/flip-book/5981a0894a.html#page/1","error":"Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!","stack":"TimeoutError: Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!\n    at ChromeLauncher.launch (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/node/BrowserLauncher.js:130:23)\n    at async startBrowser (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/browser.js:11:21)\n    at async main (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/main.js:30:30)\n    at async file:///C:/Users/macro/Documents/DescargaRevistasJS/server.js:43:9","pid":7844}
+{"timestamp":"2025-05-15T17:30:38.154Z","level":"ERROR","message":"Error durante el procesamiento","url":"https://heyzine.com/flip-book/5981a0894a.html#page/10","error":"Waiting for selector `.page-img-content` failed: Protocol error (Runtime.callFunctionOn): Target closed","stack":"TargetCloseError: Waiting for selector `.page-img-content` failed: Protocol error (Runtime.callFunctionOn): Target closed\n    at CallbackRegistry.clear (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/common/CallbackRegistry.js:69:36)\n    at CdpCDPSession._onClosed (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/CDPSession.js:98:25)\n    at Connection.onMessage (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/cdp/Connection.js:127:25)\n    at WebSocket.<anonymous> (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/node/NodeWebSocketTransport.js:38:32)\n    at callListener (C:\\Users\\macro\\Documents\\DescargaRevistasJS\\node_modules\\ws\\lib\\event-target.js:290:14)\n    at WebSocket.onMessage (C:\\Users\\macro\\Documents\\DescargaRevistasJS\\node_modules\\ws\\lib\\event-target.js:209:9)\n    at WebSocket.emit (node:events:519:28)\n    at Receiver.receiverOnMessage (C:\\Users\\macro\\Documents\\DescargaRevistasJS\\node_modules\\ws\\lib\\websocket.js:1220:20)\n    at Receiver.emit (node:events:519:28)\n    at Immediate.<anonymous> (C:\\Users\\macro\\Documents\\DescargaRevistasJS\\node_modules\\ws\\lib\\receiver.js:601:16)","pid":7844}
+{"timestamp":"2025-05-15T17:30:38.558Z","level":"INFO","message":"Navegador cerrado correctamente","pid":7844}
+{"timestamp":"2025-05-15T17:30:38.559Z","level":"ERROR","message":"Error al procesar link","url":"https://heyzine.com/flip-book/5981a0894a.html#page/10","successful":false,"details":"Waiting for selector `.page-img-content` failed: Protocol error (Runtime.callFunctionOn): Target closed","pid":7844}
+{"timestamp":"2025-05-15T17:38:09.323Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://heyzine.com/flip-book/5981a0894a.html#","pid":2960}
+{"timestamp":"2025-05-15T17:38:10.045Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\heyzine20250515_123809","pid":2960}
+{"timestamp":"2025-05-15T17:38:13.670Z","level":"INFO","message":"Navegador iniciado correctamente","pid":2960}
+{"timestamp":"2025-05-15T17:39:22.953Z","level":"ERROR","message":"Error durante el procesamiento","url":"https://heyzine.com/flip-book/5981a0894a.html#","error":"Waiting for selector `.page-img-content` failed: Waiting failed: 60000ms exceeded","stack":"TimeoutError: Waiting for selector `.page-img-content` failed: Waiting failed: 60000ms exceeded\n    at new WaitTask (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/common/WaitTask.js:47:34)\n    at IsolatedWorld.waitForFunction (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/api/Realm.js:22:26)\n    at CSSQueryHandler.waitFor (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/common/QueryHandler.js:169:95)\n    at async CdpFrame.waitForSelector (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/api/Frame.js:520:21)\n    at async CdpPage.waitForSelector (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:1363:20)\n    at async Object.descargarPaginasBlob (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/revistas/paginasBlob.js:12:5)\n    at async descargar (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/router/enrutador.js:48:24)\n    at async main (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/main.js:34:38)\n    at async file:///C:/Users/macro/Documents/DescargaRevistasJS/server.js:43:9","pid":2960}
+{"timestamp":"2025-05-15T17:39:26.288Z","level":"INFO","message":"Navegador cerrado correctamente","pid":2960}
+{"timestamp":"2025-05-15T17:39:26.289Z","level":"ERROR","message":"Error al procesar link","url":"https://heyzine.com/flip-book/5981a0894a.html#","successful":false,"details":"Waiting for selector `.page-img-content` failed: Waiting failed: 60000ms exceeded","pid":2960}
+{"timestamp":"2025-05-15T17:41:04.747Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://heyzine.com/flip-book/5981a0894a.html#","pid":2960}
+{"timestamp":"2025-05-15T17:41:04.971Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\heyzine20250515_124104","pid":2960}
+{"timestamp":"2025-05-15T17:41:12.529Z","level":"INFO","message":"Navegador iniciado correctamente","pid":2960}
+{"timestamp":"2025-05-15T17:44:23.687Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":16,"pid":2960}
+{"timestamp":"2025-05-15T17:45:32.152Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\heyzine20250515_124104","pid":2960}
+{"timestamp":"2025-05-15T17:45:33.319Z","level":"INFO","message":"Navegador cerrado correctamente","pid":2960}
+{"timestamp":"2025-05-15T17:45:33.337Z","level":"INFO","message":"Link procesado exitosamente","url":"https://heyzine.com/flip-book/5981a0894a.html#","successful":true,"details":"Operación completada","pid":2960}
+{"timestamp":"2025-05-16T03:21:15.866Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/19QCbswd2DH2EiyhXmSVKJfF1VGHUO5Va/view","pid":2960}
+{"timestamp":"2025-05-16T03:21:16.113Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250516_222116","pid":2960}
+{"timestamp":"2025-05-16T03:21:20.483Z","level":"INFO","message":"Navegador iniciado correctamente","pid":2960}
+{"timestamp":"2025-05-16T03:25:09.869Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":2960}
+{"timestamp":"2025-05-16T03:27:44.168Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250516_222116","pid":2960}
+{"timestamp":"2025-05-16T03:27:46.700Z","level":"INFO","message":"Navegador cerrado correctamente","pid":2960}
+{"timestamp":"2025-05-16T03:27:46.702Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/19QCbswd2DH2EiyhXmSVKJfF1VGHUO5Va/view","successful":true,"details":"Operación completada","pid":2960}
+{"timestamp":"2025-05-16T05:50:15.072Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":2960}
+{"timestamp":"2025-05-16T05:50:15.110Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_005015","pid":2960}
+{"timestamp":"2025-05-16T05:50:17.808Z","level":"INFO","message":"Navegador iniciado correctamente","pid":2960}
+{"timestamp":"2025-05-16T06:00:50.044Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":2960}
+{"timestamp":"2025-05-16T06:00:50.218Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_010050","pid":2960}
+{"timestamp":"2025-05-16T06:00:52.171Z","level":"INFO","message":"Navegador iniciado correctamente","pid":2960}
+{"timestamp":"2025-05-16T06:01:26.357Z","level":"INFO","message":"Imágenes descargadas","webpCount":37,"imageCount":0,"pid":2960}
+{"timestamp":"2025-05-16T06:01:51.787Z","level":"INFO","message":"Conversión de formato completada","imageCount":37,"pid":2960}
+{"timestamp":"2025-05-16T06:01:52.552Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":2960}
+{"timestamp":"2025-05-16T06:01:52.867Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":2960}
+{"timestamp":"2025-05-16T06:02:04.869Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":2960}
+{"timestamp":"2025-05-16T06:02:04.991Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_010050\\page_19.webp'","pid":2960}
+{"timestamp":"2025-05-16T06:02:10.201Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_005015","pid":2960}
+{"timestamp":"2025-05-16T06:02:11.064Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_010050","pid":2960}
+{"timestamp":"2025-05-16T06:08:05.142Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5972}
+{"timestamp":"2025-05-16T06:08:05.346Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_010805","pid":5972}
+{"timestamp":"2025-05-16T06:08:07.842Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-16T07:41:04.780Z","level":"INFO","message":"Imágenes descargadas","webpCount":18,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-16T07:41:19.598Z","level":"INFO","message":"Conversión de formato completada","imageCount":18,"pid":5972}
+{"timestamp":"2025-05-16T07:41:34.250Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5972}
+{"timestamp":"2025-05-16T07:41:58.557Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250516_010805","pid":5972}
+{"timestamp":"2025-05-16T07:41:59.757Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-16T07:41:59.758Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-17T04:40:26.595Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1ZovV2mJBwPDjgzWoO2nHBPI0Z6J6FQRC/view","pid":5972}
+{"timestamp":"2025-05-17T04:40:26.857Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250517_234026","pid":5972}
+{"timestamp":"2025-05-17T04:40:33.329Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-17T04:45:39.503Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":5972}
+{"timestamp":"2025-05-17T04:49:57.614Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250517_234026","pid":5972}
+{"timestamp":"2025-05-17T04:50:00.164Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-17T04:50:00.166Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1ZovV2mJBwPDjgzWoO2nHBPI0Z6J6FQRC/view","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-17T06:14:40.913Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5972}
+{"timestamp":"2025-05-17T06:14:41.674Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250517_011441","pid":5972}
+{"timestamp":"2025-05-17T06:14:45.423Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-17T06:17:04.921Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-17T06:17:12.836Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":5972}
+{"timestamp":"2025-05-17T06:17:20.200Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5972}
+{"timestamp":"2025-05-17T06:17:40.173Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250517_011441","pid":5972}
+{"timestamp":"2025-05-17T06:17:43.117Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-17T06:17:43.118Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-17T07:09:20.005Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://eltabloide.com.co/mayo17/#flipbook-df_24838/1/","pid":5972}
+{"timestamp":"2025-05-17T07:09:22.321Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\tabloide20250517_020922","pid":5972}
+{"timestamp":"2025-05-17T07:09:28.038Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:10:34.388Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-17T07:10:37.376Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:10:37.380Z","level":"INFO","message":"Link procesado exitosamente","url":"https://eltabloide.com.co/mayo17/#flipbook-df_24838/1/","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-17T07:11:47.781Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://eltabloide.com.co/mayo17/#flipbook-df_24838/1/","pid":5972}
+{"timestamp":"2025-05-17T07:11:49.741Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\tabloide20250517_021149","pid":5972}
+{"timestamp":"2025-05-17T07:11:53.337Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:12:54.354Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-17T07:12:57.181Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:12:57.187Z","level":"INFO","message":"Link procesado exitosamente","url":"https://eltabloide.com.co/mayo17/#flipbook-df_24838/1/","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-17T07:52:37.071Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.semana.com/edicion-impresa/articulo/ed-2236/202550/","pid":5972}
+{"timestamp":"2025-05-17T07:52:39.604Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\semana20250517_025239","pid":5972}
+{"timestamp":"2025-05-17T07:52:42.218Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:55:29.378Z","level":"INFO","message":"Imágenes descargadas","webpCount":84,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-17T07:56:24.165Z","level":"INFO","message":"Conversión de formato completada","imageCount":84,"pid":5972}
+{"timestamp":"2025-05-17T07:57:16.597Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5972}
+{"timestamp":"2025-05-17T07:58:40.567Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\semana20250517_025239","pid":5972}
+{"timestamp":"2025-05-17T07:58:51.180Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-17T07:58:51.192Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.semana.com/edicion-impresa/articulo/ed-2236/202550/","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-18T04:06:48.192Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1U5qYEVzwJOavvNA1Z60RSdmpfu5I7L3R/view","pid":5972}
+{"timestamp":"2025-05-18T04:06:48.835Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250518_230648","pid":5972}
+{"timestamp":"2025-05-18T04:06:52.814Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-18T04:17:12.492Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":64,"pid":5972}
+{"timestamp":"2025-05-18T04:27:00.449Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250518_230648","pid":5972}
+{"timestamp":"2025-05-18T04:27:03.687Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-18T04:27:03.690Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1U5qYEVzwJOavvNA1Z60RSdmpfu5I7L3R/view","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-18T06:06:37.223Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5972}
+{"timestamp":"2025-05-18T06:06:38.113Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250518_010638","pid":5972}
+{"timestamp":"2025-05-18T06:06:41.352Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-18T06:09:03.166Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-18T06:09:13.100Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":5972}
+{"timestamp":"2025-05-18T06:09:23.720Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5972}
+{"timestamp":"2025-05-18T06:09:49.514Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250518_010638","pid":5972}
+{"timestamp":"2025-05-18T06:09:51.594Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-18T06:09:51.595Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-19T03:18:26.670Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1hoYdOK5Q5JRkiLbipvY628baZ5LSTVCB/view","pid":5972}
+{"timestamp":"2025-05-19T03:18:27.185Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250519_221827","pid":5972}
+{"timestamp":"2025-05-19T03:18:33.276Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-19T03:23:06.367Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":5972}
+{"timestamp":"2025-05-19T03:25:43.104Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250519_221827","pid":5972}
+{"timestamp":"2025-05-19T03:25:45.633Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5972}
+{"timestamp":"2025-05-19T03:25:45.644Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1hoYdOK5Q5JRkiLbipvY628baZ5LSTVCB/view","successful":true,"details":"Operación completada","pid":5972}
+{"timestamp":"2025-05-19T06:36:28.693Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5972}
+{"timestamp":"2025-05-19T06:36:28.881Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_013628","pid":5972}
+{"timestamp":"2025-05-19T06:36:32.633Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-19T06:43:58.227Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5972}
+{"timestamp":"2025-05-19T06:43:58.405Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_014358","pid":5972}
+{"timestamp":"2025-05-19T06:44:01.246Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5972}
+{"timestamp":"2025-05-19T06:44:43.672Z","level":"INFO","message":"Imágenes descargadas","webpCount":33,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-19T06:45:03.582Z","level":"INFO","message":"Conversión de formato completada","imageCount":33,"pid":5972}
+{"timestamp":"2025-05-19T06:45:04.119Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":5972}
+{"timestamp":"2025-05-19T06:45:04.478Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":5972}
+{"timestamp":"2025-05-19T06:45:14.090Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5972}
+{"timestamp":"2025-05-19T06:45:14.576Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_014358\\page_17.webp'","pid":5972}
+{"timestamp":"2025-05-19T06:45:19.634Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_013628","pid":5972}
+{"timestamp":"2025-05-19T06:45:21.655Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_014358","pid":5972}
+{"timestamp":"2025-05-19T07:10:59.217Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-19T07:10:59.337Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_021059","pid":1344}
+{"timestamp":"2025-05-19T07:11:04.035Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:44:28.979Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-19T07:44:29.062Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_024429","pid":1344}
+{"timestamp":"2025-05-19T07:44:32.745Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:44:52.712Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-19T07:44:59.141Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":1344}
+{"timestamp":"2025-05-19T07:45:09.175Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":1344}
+{"timestamp":"2025-05-19T07:45:31.325Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_021059","pid":1344}
+{"timestamp":"2025-05-19T07:45:32.700Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:45:32.716Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-19T07:50:12.911Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-19T07:50:13.717Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_025013","pid":1344}
+{"timestamp":"2025-05-19T07:50:17.246Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:50:37.496Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-19T07:50:38.988Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:50:38.989Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-19T07:54:01.413Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-19T07:54:01.527Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_025401","pid":1344}
+{"timestamp":"2025-05-19T07:54:04.550Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:54:27.985Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-19T07:54:34.378Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":1344}
+{"timestamp":"2025-05-19T07:54:45.406Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":1344}
+{"timestamp":"2025-05-19T07:55:13.259Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_025013","pid":1344}
+{"timestamp":"2025-05-19T07:55:14.493Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T07:55:14.493Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-19T09:27:24.497Z","level":"INFO","message":"Imágenes descargadas","webpCount":14,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-19T09:27:34.129Z","level":"INFO","message":"Conversión de formato completada","imageCount":14,"pid":1344}
+{"timestamp":"2025-05-19T09:27:44.028Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"EBUSY: resource busy or locked, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_025401\\page_14.webp'","pid":1344}
+{"timestamp":"2025-05-19T09:28:00.258Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250519_025401","pid":1344}
+{"timestamp":"2025-05-19T09:28:02.576Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T09:28:02.577Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-19T10:24:51.311Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973ef22a65b4270","pid":1344}
+{"timestamp":"2025-05-19T10:24:51.678Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250519_052451","pid":1344}
+{"timestamp":"2025-05-19T10:24:56.611Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T10:26:31.927Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":1344}
+{"timestamp":"2025-05-19T10:27:00.806Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250519_052451","pid":1344}
+{"timestamp":"2025-05-19T10:27:03.358Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T10:27:03.359Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973ef22a65b4270","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-19T10:27:35.889Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/0047659734de1a2e43871","pid":1344}
+{"timestamp":"2025-05-19T10:27:35.907Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250519_052735","pid":1344}
+{"timestamp":"2025-05-19T10:27:39.696Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-19T10:29:02.959Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":16,"pid":1344}
+{"timestamp":"2025-05-19T10:29:30.620Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250519_052735","pid":1344}
+{"timestamp":"2025-05-19T10:29:31.853Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-19T10:29:31.990Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/0047659734de1a2e43871","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T05:02:35.984Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1rlHajIvRVnFNIQLQiK5E6t5rVDBr-aXY/view","pid":1344}
+{"timestamp":"2025-05-20T05:02:36.285Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250520_000236","pid":1344}
+{"timestamp":"2025-05-20T05:02:41.078Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T05:06:59.824Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":1344}
+{"timestamp":"2025-05-20T05:10:57.118Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250520_000236","pid":1344}
+{"timestamp":"2025-05-20T05:10:59.123Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T05:10:59.126Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1rlHajIvRVnFNIQLQiK5E6t5rVDBr-aXY/view","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T06:48:05.140Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-20T06:48:05.180Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250520_014805","pid":1344}
+{"timestamp":"2025-05-20T06:48:08.878Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T06:50:35.116Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-20T06:50:40.735Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":1344}
+{"timestamp":"2025-05-20T06:50:55.197Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":1344}
+{"timestamp":"2025-05-20T06:51:19.491Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250520_014805","pid":1344}
+{"timestamp":"2025-05-20T06:51:21.603Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T06:51:21.605Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T10:13:20.712Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/drive/folders/1YcANKSt5F1gzmcMAH9Zm_DzW2UhKgQRX","pid":1344}
+{"timestamp":"2025-05-20T10:13:20.847Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250520_051320","pid":1344}
+{"timestamp":"2025-05-20T10:13:24.566Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:14:37.713Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-20T10:14:41.481Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:14:41.489Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/drive/folders/1YcANKSt5F1gzmcMAH9Zm_DzW2UhKgQRX","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T10:16:43.860Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/0047659736d3fb85c2c91","pid":1344}
+{"timestamp":"2025-05-20T10:16:44.093Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_051643","pid":1344}
+{"timestamp":"2025-05-20T10:16:48.248Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:18:19.895Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":1344}
+{"timestamp":"2025-05-20T10:19:05.507Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_051643","pid":1344}
+{"timestamp":"2025-05-20T10:19:07.159Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:19:07.160Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/0047659736d3fb85c2c91","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T10:21:52.856Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973bb658e3d331e","pid":1344}
+{"timestamp":"2025-05-20T10:21:52.923Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_052152","pid":1344}
+{"timestamp":"2025-05-20T10:21:56.801Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:23:35.380Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":1344}
+{"timestamp":"2025-05-20T10:24:03.214Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_052152","pid":1344}
+{"timestamp":"2025-05-20T10:24:05.180Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T10:24:05.182Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973bb658e3d331e","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T12:40:15.898Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/0066670468ab1ef0675fa","pid":1344}
+{"timestamp":"2025-05-20T12:40:16.061Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_074016","pid":1344}
+{"timestamp":"2025-05-20T12:40:19.905Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T12:43:55.303Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":54,"pid":1344}
+{"timestamp":"2025-05-20T12:44:47.948Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250520_074016","pid":1344}
+{"timestamp":"2025-05-20T12:44:50.627Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T12:44:50.630Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/0066670468ab1ef0675fa","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-20T12:53:40.033Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://revistas.ladevi.travel/ladevi-colombia-414","pid":1344}
+{"timestamp":"2025-05-20T12:53:40.691Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\ladevi20250520_075340","pid":1344}
+{"timestamp":"2025-05-20T12:53:44.757Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-20T13:01:26.391Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":50,"pid":1344}
+{"timestamp":"2025-05-20T13:05:14.798Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\ladevi20250520_075340","pid":1344}
+{"timestamp":"2025-05-20T13:05:17.023Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-20T13:05:17.026Z","level":"INFO","message":"Link procesado exitosamente","url":"https://revistas.ladevi.travel/ladevi-colombia-414","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-21T05:22:33.661Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/19EcLAuC5IHORPk6UvXGNb2SnLJsetG96/view","pid":1344}
+{"timestamp":"2025-05-21T05:22:33.727Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250521_002233","pid":1344}
+{"timestamp":"2025-05-21T05:22:38.842Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-21T05:26:36.228Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":1344}
+{"timestamp":"2025-05-21T05:29:09.105Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250521_002233","pid":1344}
+{"timestamp":"2025-05-21T05:29:11.148Z","level":"INFO","message":"Navegador cerrado correctamente","pid":1344}
+{"timestamp":"2025-05-21T05:29:11.155Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/19EcLAuC5IHORPk6UvXGNb2SnLJsetG96/view","successful":true,"details":"Operación completada","pid":1344}
+{"timestamp":"2025-05-21T07:12:58.235Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-21T07:12:58.357Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250521_021258","pid":1344}
+{"timestamp":"2025-05-21T07:13:03.562Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-21T07:58:18.457Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":1344}
+{"timestamp":"2025-05-21T07:58:18.506Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250521_025818","pid":1344}
+{"timestamp":"2025-05-21T07:58:22.106Z","level":"INFO","message":"Navegador iniciado correctamente","pid":1344}
+{"timestamp":"2025-05-21T07:59:03.669Z","level":"INFO","message":"Imágenes descargadas","webpCount":33,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-21T07:59:23.062Z","level":"INFO","message":"Conversión de formato completada","imageCount":33,"pid":1344}
+{"timestamp":"2025-05-21T07:59:24.609Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":1344}
+{"timestamp":"2025-05-21T07:59:25.848Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":1344}
+{"timestamp":"2025-05-21T07:59:32.700Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":1344}
+{"timestamp":"2025-05-21T07:59:33.161Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250521_021258\\page_17.webp'","pid":1344}
+{"timestamp":"2025-05-21T07:59:38.006Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250521_025818","pid":1344}
+{"timestamp":"2025-05-21T07:59:39.282Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250521_021258","pid":1344}
+{"timestamp":"2025-05-21T10:07:43.461Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/00476597329e5526b860c","pid":8324}
+{"timestamp":"2025-05-21T10:07:43.549Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_050743","pid":8324}
+{"timestamp":"2025-05-21T10:07:48.265Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-21T10:09:27.694Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":8324}
+{"timestamp":"2025-05-21T10:10:05.183Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_050743","pid":8324}
+{"timestamp":"2025-05-21T10:10:06.476Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-21T10:10:06.570Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/00476597329e5526b860c","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-21T10:12:21.329Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973a8c24354e38c","pid":8324}
+{"timestamp":"2025-05-21T10:12:21.360Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_051221","pid":8324}
+{"timestamp":"2025-05-21T10:12:23.823Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-21T10:14:07.871Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":8324}
+{"timestamp":"2025-05-21T10:14:39.500Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_051221","pid":8324}
+{"timestamp":"2025-05-21T10:14:42.563Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-21T10:14:42.568Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973a8c24354e38c","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-21T11:48:06.301Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/007219885332ae51bbce2","pid":8324}
+{"timestamp":"2025-05-21T11:48:07.700Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_064807","pid":8324}
+{"timestamp":"2025-05-21T11:48:11.205Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-21T11:49:46.745Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":8324}
+{"timestamp":"2025-05-21T11:50:10.628Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250521_064807","pid":8324}
+{"timestamp":"2025-05-21T11:50:13.169Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-21T11:50:13.242Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/007219885332ae51bbce2","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-22T03:13:36.746Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1b7WkM1gicOUz9q6D89EdwxscgDmM3fcj/view","pid":8324}
+{"timestamp":"2025-05-22T03:13:36.959Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250522_221336","pid":8324}
+{"timestamp":"2025-05-22T03:13:42.556Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T03:18:16.262Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":8324}
+{"timestamp":"2025-05-22T03:22:02.952Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250522_221336","pid":8324}
+{"timestamp":"2025-05-22T03:22:04.784Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T03:22:04.794Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1b7WkM1gicOUz9q6D89EdwxscgDmM3fcj/view","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-22T06:34:03.741Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":8324}
+{"timestamp":"2025-05-22T06:34:03.804Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250522_013403","pid":8324}
+{"timestamp":"2025-05-22T06:34:10.414Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T08:06:50.615Z","level":"ERROR","message":"Error durante el procesamiento","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","error":"Cannot read properties of undefined (reading 'replace')","stack":"TypeError: Cannot read properties of undefined (reading 'replace')\n    at Object.descargarClarin (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/revistas/clarin.js:157:36)\n    at async descargar (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/router/enrutador.js:48:24)\n    at async main (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/main.js:34:38)\n    at async file:///C:/Users/macro/Documents/DescargaRevistasJS/server.js:43:9","pid":8324}
+{"timestamp":"2025-05-22T08:06:53.845Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T08:06:53.847Z","level":"ERROR","message":"Error al procesar link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":false,"details":"Cannot read properties of undefined (reading 'replace')","pid":8324}
+{"timestamp":"2025-05-22T08:43:23.579Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":8324}
+{"timestamp":"2025-05-22T08:43:23.748Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250522_034323","pid":8324}
+{"timestamp":"2025-05-22T08:43:28.656Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T08:45:53.400Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":8324}
+{"timestamp":"2025-05-22T08:45:59.285Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":8324}
+{"timestamp":"2025-05-22T08:46:15.826Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":8324}
+{"timestamp":"2025-05-22T08:46:40.215Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250522_034323","pid":8324}
+{"timestamp":"2025-05-22T08:46:44.421Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T08:46:44.422Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-22T10:08:22.634Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973ba3c971e9459","pid":8324}
+{"timestamp":"2025-05-22T10:08:22.910Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_050822","pid":8324}
+{"timestamp":"2025-05-22T10:08:26.973Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:09:53.176Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":8324}
+{"timestamp":"2025-05-22T10:10:26.216Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_050822","pid":8324}
+{"timestamp":"2025-05-22T10:10:28.466Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:10:28.467Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973ba3c971e9459","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-22T10:15:22.467Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/0047659735544e3bbcd04","pid":8324}
+{"timestamp":"2025-05-22T10:15:23.075Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_051523","pid":8324}
+{"timestamp":"2025-05-22T10:15:25.692Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:16:50.687Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":8324}
+{"timestamp":"2025-05-22T10:17:25.986Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_051523","pid":8324}
+{"timestamp":"2025-05-22T10:17:29.220Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:17:29.222Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/0047659735544e3bbcd04","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-22T10:42:29.671Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/account/private/read/#code-006268238b96cd3579ba0","pid":8324}
+{"timestamp":"2025-05-22T10:42:29.833Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_054229","pid":8324}
+{"timestamp":"2025-05-22T10:42:33.271Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:44:04.564Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":8324}
+{"timestamp":"2025-05-22T10:44:42.779Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250522_054229","pid":8324}
+{"timestamp":"2025-05-22T10:44:44.788Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-22T10:44:44.790Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/account/private/read/#code-006268238b96cd3579ba0","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-23T05:44:29.223Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://drive.google.com/file/d/1FhaNdB3yTtK7QUoMMPUscg98kgrMo2lH/view","pid":8324}
+{"timestamp":"2025-05-23T05:44:29.285Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250523_004429","pid":8324}
+{"timestamp":"2025-05-23T05:44:39.441Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-23T05:49:17.715Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":24,"pid":8324}
+{"timestamp":"2025-05-23T05:56:00.084Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\googleDrive20250523_004429","pid":8324}
+{"timestamp":"2025-05-23T05:56:03.427Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-23T05:56:03.428Z","level":"INFO","message":"Link procesado exitosamente","url":"https://drive.google.com/file/d/1FhaNdB3yTtK7QUoMMPUscg98kgrMo2lH/view","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-23T07:42:21.946Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":8324}
+{"timestamp":"2025-05-23T07:42:22.492Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_024222","pid":8324}
+{"timestamp":"2025-05-23T07:42:25.158Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-23T08:02:38.165Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":8324}
+{"timestamp":"2025-05-23T08:02:38.469Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_030238","pid":8324}
+{"timestamp":"2025-05-23T08:02:41.038Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-23T08:03:06.606Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":8324}
+{"timestamp":"2025-05-23T08:03:20.852Z","level":"INFO","message":"Navegador cerrado correctamente","pid":8324}
+{"timestamp":"2025-05-23T08:03:20.855Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":8324}
+{"timestamp":"2025-05-23T08:10:37.139Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":8324}
+{"timestamp":"2025-05-23T08:10:37.538Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_031037","pid":8324}
+{"timestamp":"2025-05-23T08:10:41.597Z","level":"INFO","message":"Navegador iniciado correctamente","pid":8324}
+{"timestamp":"2025-05-23T08:11:18.384Z","level":"INFO","message":"Imágenes descargadas","webpCount":33,"imageCount":0,"pid":8324}
+{"timestamp":"2025-05-23T08:11:55.585Z","level":"INFO","message":"Conversión de formato completada","imageCount":33,"pid":8324}
+{"timestamp":"2025-05-23T08:11:57.978Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":8324}
+{"timestamp":"2025-05-23T08:11:59.171Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":8324}
+{"timestamp":"2025-05-23T08:12:07.544Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":8324}
+{"timestamp":"2025-05-23T08:12:07.871Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_030238\\page_17.webp'","pid":8324}
+{"timestamp":"2025-05-23T08:12:13.738Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_031037","pid":8324}
+{"timestamp":"2025-05-23T08:12:16.019Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_030238","pid":8324}
+{"timestamp":"2025-05-23T08:29:13.090Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":3024}
+{"timestamp":"2025-05-23T08:29:13.428Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_032913","pid":3024}
+{"timestamp":"2025-05-23T08:29:18.378Z","level":"INFO","message":"Navegador iniciado correctamente","pid":3024}
+{"timestamp":"2025-05-23T08:38:33.734Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":3024}
+{"timestamp":"2025-05-23T08:38:33.788Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_033833","pid":3024}
+{"timestamp":"2025-05-23T08:38:38.117Z","level":"INFO","message":"Navegador iniciado correctamente","pid":3024}
+{"timestamp":"2025-05-23T08:39:12.137Z","level":"INFO","message":"Imágenes descargadas","webpCount":26,"imageCount":0,"pid":3024}
+{"timestamp":"2025-05-23T08:39:33.954Z","level":"INFO","message":"Conversión de formato completada","imageCount":26,"pid":3024}
+{"timestamp":"2025-05-23T08:39:35.698Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":3024}
+{"timestamp":"2025-05-23T08:39:37.917Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":3024}
+{"timestamp":"2025-05-23T08:39:55.686Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":3024}
+{"timestamp":"2025-05-23T08:39:55.752Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_033833\\page_10.webp'","pid":3024}
+{"timestamp":"2025-05-23T08:40:01.208Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_032913","pid":3024}
+{"timestamp":"2025-05-23T08:40:01.210Z","level":"INFO","message":"Navegador cerrado correctamente","pid":3024}
+{"timestamp":"2025-05-23T08:40:01.211Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":3024}
+{"timestamp":"2025-05-23T08:40:01.427Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_033833","pid":3024}
+{"timestamp":"2025-05-23T08:43:35.971Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":4960}
+{"timestamp":"2025-05-23T08:43:36.103Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_034336","pid":4960}
+{"timestamp":"2025-05-23T08:43:40.560Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4960}
+{"timestamp":"2025-05-23T08:47:35.537Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":4960}
+{"timestamp":"2025-05-23T08:47:35.608Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_034735","pid":4960}
+{"timestamp":"2025-05-23T08:47:40.532Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4960}
+{"timestamp":"2025-05-23T08:48:16.354Z","level":"INFO","message":"Imágenes descargadas","webpCount":16,"imageCount":0,"pid":4960}
+{"timestamp":"2025-05-23T08:48:31.612Z","level":"INFO","message":"Conversión de formato completada","imageCount":16,"pid":4960}
+{"timestamp":"2025-05-23T08:48:50.207Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":4960}
+{"timestamp":"2025-05-23T08:49:23.828Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_034336","pid":4960}
+{"timestamp":"2025-05-23T08:49:26.372Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4960}
+{"timestamp":"2025-05-23T08:49:26.374Z","level":"INFO","message":"Link procesado exitosamente","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","successful":true,"details":"Operación completada","pid":4960}
+{"timestamp":"2025-05-23T08:59:58.880Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":4960}
+{"timestamp":"2025-05-23T08:59:59.052Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_035959","pid":4960}
+{"timestamp":"2025-05-23T09:00:03.886Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4960}
+{"timestamp":"2025-05-23T09:00:41.915Z","level":"INFO","message":"Imágenes descargadas","webpCount":31,"imageCount":0,"pid":4960}
+{"timestamp":"2025-05-23T09:01:11.247Z","level":"INFO","message":"Conversión de formato completada","imageCount":31,"pid":4960}
+{"timestamp":"2025-05-23T09:01:13.113Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":4960}
+{"timestamp":"2025-05-23T09:01:13.421Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":4960}
+{"timestamp":"2025-05-23T09:01:25.224Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":4960}
+{"timestamp":"2025-05-23T09:01:26.426Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_034735\\page_15.webp'","pid":4960}
+{"timestamp":"2025-05-23T09:01:31.748Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_035959","pid":4960}
+{"timestamp":"2025-05-23T09:01:34.346Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_034735","pid":4960}
+{"timestamp":"2025-05-23T09:06:09.442Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5444}
+{"timestamp":"2025-05-23T09:06:09.492Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_040609","pid":5444}
+{"timestamp":"2025-05-23T09:06:11.637Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5444}
+{"timestamp":"2025-05-23T09:10:39.436Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://laopinion.pressreader.com/la-opini%C3%B3n","pid":5444}
+{"timestamp":"2025-05-23T09:10:39.563Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_041039","pid":5444}
+{"timestamp":"2025-05-23T09:10:42.019Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5444}
+{"timestamp":"2025-05-23T09:11:14.639Z","level":"INFO","message":"Imágenes descargadas","webpCount":26,"imageCount":0,"pid":5444}
+{"timestamp":"2025-05-23T09:11:27.842Z","level":"INFO","message":"Conversión de formato completada","imageCount":26,"pid":5444}
+{"timestamp":"2025-05-23T09:11:28.337Z","level":"INFO","message":"Imágenes descargadas","webpCount":1,"imageCount":0,"pid":5444}
+{"timestamp":"2025-05-23T09:11:29.387Z","level":"INFO","message":"Conversión de formato completada","imageCount":1,"pid":5444}
+{"timestamp":"2025-05-23T09:11:40.852Z","level":"INFO","message":"Archivos WebP temporales eliminados","pid":5444}
+{"timestamp":"2025-05-23T09:11:41.189Z","level":"ERROR","message":"Error al eliminar archivos WebP","error":"ENOENT: no such file or directory, unlink '\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_040609\\page_10.webp'","pid":5444}
+{"timestamp":"2025-05-23T09:11:48.486Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_041039","pid":5444}
+{"timestamp":"2025-05-23T09:11:52.641Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\pressreader20250523_040609","pid":5444}
+{"timestamp":"2025-05-23T09:35:54.345Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/lanacion/read/006268238d80f4e89eeb0","pid":4596}
+{"timestamp":"2025-05-23T09:35:54.624Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_043554","pid":4596}
+{"timestamp":"2025-05-23T09:35:57.184Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T09:37:38.345Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":4596}
+{"timestamp":"2025-05-23T09:38:34.508Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_043554","pid":4596}
+{"timestamp":"2025-05-23T09:38:36.791Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T09:38:36.804Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/lanacion/read/006268238d80f4e89eeb0","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T10:10:35.587Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973a882245aa990","pid":4596}
+{"timestamp":"2025-05-23T10:10:35.697Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_051035","pid":4596}
+{"timestamp":"2025-05-23T10:10:37.619Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T10:12:17.361Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":4596}
+{"timestamp":"2025-05-23T10:13:26.165Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_051035","pid":4596}
+{"timestamp":"2025-05-23T10:13:28.172Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T10:13:28.173Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973a882245aa990","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T10:19:20.637Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://www.calameo.com/read/004765973ca8922af23a4","pid":4596}
+{"timestamp":"2025-05-23T10:19:20.862Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_051920","pid":4596}
+{"timestamp":"2025-05-23T10:19:23.067Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T10:20:54.845Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":20,"pid":4596}
+{"timestamp":"2025-05-23T10:21:39.248Z","level":"INFO","message":"PDF creado exitosamente","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\calameo20250523_051920","pid":4596}
+{"timestamp":"2025-05-23T10:21:41.535Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T10:21:41.535Z","level":"INFO","message":"Link procesado exitosamente","url":"https://www.calameo.com/read/004765973ca8922af23a4","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T18:40:04.540Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","pid":4596}
+{"timestamp":"2025-05-23T18:40:04.695Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_134004","pid":4596}
+{"timestamp":"2025-05-23T18:40:10.583Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T18:42:27.721Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":4596}
+{"timestamp":"2025-05-23T18:42:29.656Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T18:42:29.661Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T19:23:13.377Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","pid":4596}
+{"timestamp":"2025-05-23T19:23:13.670Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_142313","pid":4596}
+{"timestamp":"2025-05-23T19:23:17.262Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T19:24:32.741Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":4596}
+{"timestamp":"2025-05-23T19:24:34.283Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T19:24:34.284Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T19:27:19.724Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","pid":4596}
+{"timestamp":"2025-05-23T19:27:20.460Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_142719","pid":4596}
+{"timestamp":"2025-05-23T19:27:26.327Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4596}
+{"timestamp":"2025-05-23T19:28:40.485Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":4596}
+{"timestamp":"2025-05-23T19:28:43.271Z","level":"INFO","message":"Navegador cerrado correctamente","pid":4596}
+{"timestamp":"2025-05-23T19:28:43.308Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","successful":true,"details":"Operación completada","pid":4596}
+{"timestamp":"2025-05-23T19:42:21.184Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","pid":5592}
+{"timestamp":"2025-05-23T19:42:21.652Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_144221","pid":5592}
+{"timestamp":"2025-05-23T19:42:27.605Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5592}
+{"timestamp":"2025-05-23T19:43:37.990Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":5592}
+{"timestamp":"2025-05-23T19:43:40.946Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5592}
+{"timestamp":"2025-05-23T19:43:40.956Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","successful":true,"details":"Operación completada","pid":5592}
+{"timestamp":"2025-05-23T19:58:43.147Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","pid":5592}
+{"timestamp":"2025-05-23T19:58:44.055Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_145843","pid":5592}
+{"timestamp":"2025-05-23T19:58:48.108Z","level":"INFO","message":"Navegador iniciado correctamente","pid":5592}
+{"timestamp":"2025-05-23T20:00:20.648Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":5592}
+{"timestamp":"2025-05-23T20:00:25.383Z","level":"INFO","message":"Navegador cerrado correctamente","pid":5592}
+{"timestamp":"2025-05-23T20:00:25.386Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/","successful":true,"details":"Operación completada","pid":5592}
+{"timestamp":"2025-05-23T20:02:59.958Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ +","pid":4936}
+{"timestamp":"2025-05-23T20:03:00.871Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_150300","pid":4936}
+{"timestamp":"2025-05-23T20:03:05.874Z","level":"INFO","message":"Navegador iniciado correctamente","pid":4936}
+{"timestamp":"2025-05-23T20:04:08.530Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ ","pid":208}
+{"timestamp":"2025-05-23T20:04:08.885Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_150408","pid":208}
+{"timestamp":"2025-05-23T20:04:13.680Z","level":"INFO","message":"Navegador iniciado correctamente","pid":208}
+{"timestamp":"2025-05-23T20:05:13.253Z","level":"ERROR","message":"Error durante el procesamiento","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ ","error":"Attempted to use detached Frame '4892949415A8BDA2576E14B22505FFE6'.","stack":"Error: Attempted to use detached Frame '4892949415A8BDA2576E14B22505FFE6'.\n    at CdpFrame.<anonymous> (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/util/decorators.js:92:23)\n    at CdpPage.goto (file:///C:/Users/macro/Documents/DescargaRevistasJS/node_modules/puppeteer-core/lib/esm/puppeteer/api/Page.js:563:43)\n    at Object.descargarRollingStone [as rollingStone] (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/revistas/rollingStone.js:64:16)\n    at async descargar (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/router/enrutador.js:48:24)\n    at async main (file:///C:/Users/macro/Documents/DescargaRevistasJS/src/main.js:34:38)\n    at async file:///C:/Users/macro/Documents/DescargaRevistasJS/server.js:43:9","pid":208}
+{"timestamp":"2025-05-23T20:05:13.258Z","level":"INFO","message":"Navegador cerrado correctamente","pid":208}
+{"timestamp":"2025-05-23T20:05:13.258Z","level":"ERROR","message":"Error al procesar link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ ","successful":false,"details":"Attempted to use detached Frame '4892949415A8BDA2576E14B22505FFE6'.","pid":208}
+{"timestamp":"2025-05-23T20:06:15.217Z","level":"INFO","message":"Iniciando procesamiento de link","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ ","pid":6900}
+{"timestamp":"2025-05-23T20:06:16.016Z","level":"INFO","message":"Carpetas preparadas","networkPath":"\\\\192.168.1.153\\Area-Tecnologia\\DESCARGAREVISTASJS\\rollingStone20250523_150615","pid":6900}
+{"timestamp":"2025-05-23T20:06:19.499Z","level":"INFO","message":"Navegador iniciado correctamente","pid":6900}
+{"timestamp":"2025-05-23T20:07:23.850Z","level":"INFO","message":"Imágenes descargadas","webpCount":0,"imageCount":0,"pid":6900}
+{"timestamp":"2025-05-23T20:07:28.300Z","level":"INFO","message":"Navegador cerrado correctamente","pid":6900}
+{"timestamp":"2025-05-23T20:07:28.412Z","level":"INFO","message":"Link procesado exitosamente","url":"https://es.rollingstone.com/revistas/ca7riel-paco-amoroso/ ","successful":true,"details":"Operación completada","pid":6900}

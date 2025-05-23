@@ -49,8 +49,8 @@ export async function descargarRollingStone(linkDescarga, callback, page, networ
     try {
         await page.waitForSelector('input[placeholder="Nombre de usuario o correo electrónico"]', { timeout: 10000 });
         await page.type('input[placeholder="Nombre de usuario o correo electrónico"]', user);
-        await page.waitForSelector('input[placeholder="Password"]');
-        await page.type('input[placeholder="Password"]', password);
+        await page.waitForSelector('input[placeholder="Contraseña"]');
+        await page.type('input[placeholder="Contraseña"]', password);
         await page.waitForSelector('button[name="uael-login-submit"]', { visible: true });
         await page.click('button[name="uael-login-submit"]');
         await waitFor(10000);
