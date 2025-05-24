@@ -45,7 +45,7 @@ function rotateLogFileIfNeeded(logPath) {
 }
 
 /**
- * Formatea una entrada de log
+ * Formatea una entrada de logs
  * @param {Object} level - Nivel de log (de LOG_LEVELS)
  * @param {string} message - Mensaje principal
  * @param {Object} metadata - Metadatos adicionales
